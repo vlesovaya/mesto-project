@@ -17,3 +17,7 @@
   opacity: 1;
   background-image: url("../../../images/heart-button-active.svg");
 }
+
+.gallery__like:disabled {
+  opacity: 1;
+}
