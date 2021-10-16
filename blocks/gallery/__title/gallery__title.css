@@ -1,0 +1,21 @@
+.gallery__title {
+  position: relative;
+  display: block;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 900;
+  color: #000000;
+  margin: 0;
+}
+
+.gallery__title:before {
+  content: '';
+  position: absolute;
+  background: url("../../../images/heart-button.svg");
+  top: 4px;
+  right: 0;
+  width: 22px;
+  height: 19px;
+  cursor: pointer;
+  vertical-align: baseline;
+}

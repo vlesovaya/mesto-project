@@ -1,0 +1,8 @@
+.gallery__subscription {
+  max-width: 282px;
+  margin: 0;
+  padding: 25px 21px 31px;
+  background-color: #ffffff;
+  grid-area: gallery__subscription;
+  border-radius: 0 0 10px 10px;
+}
