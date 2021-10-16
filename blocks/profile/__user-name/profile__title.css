@@ -1,6 +1,23 @@
 .profile__title {
+  position: relative;
   margin: 22px 0 0;
+  padding: 0 42px 0 0;
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
+}
+
+.profile__title:before {
+  content: '';
+  position: absolute;
+  background: url("../../../images/edit-button.svg");
+  top: 15px;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.profile__title:hover:before {
+  opacity: 0.6;
 }
