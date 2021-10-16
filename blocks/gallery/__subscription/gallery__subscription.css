@@ -1,4 +1,6 @@
 .gallery__subscription {
+  display: flex;
+  justify-content: space-between;
   max-width: 282px;
   margin: 0;
   padding: 25px 21px 31px;
@@ -6,3 +8,24 @@
   grid-area: gallery__subscription;
   border-radius: 0 0 10px 10px;
 }
+
+/*.gallery__subscription:before {*/
+/*  content: '';*/
+/*  position: absolute;*/
+/*  background: url("../../../images/heart-button.svg");*/
+/*  top: 31px;*/
+/*  right: 30px;*/
+/*  width: 22px;*/
+/*  height: 19px;*/
+/*  cursor: pointer;*/
+/*  vertical-align: baseline;*/
+/*}*/
+
+/*.gallery__subscription:hover:before {*/
+/*  opacity: 0.5;*/
+/*}*/
+
+/*.gallery__subscription:active:before {*/
+/*  background: url("../../../images/heart-button-active.svg");*/
+/*  opacity: 1;*/
+/*}*/
