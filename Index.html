@@ -2,22 +2,22 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Проект: Место</title>
-  <link rel="stylesheet" href="page/index.css">
+  <link href="page/index.css" rel="stylesheet">
 </head>
 <body class="body">
 <div class="page page__centered">
 
   <header class="header page__header">
-    <img class="header__logo" src="./images/header-logo.svg" alt="Логотип проекта Место">
+    <img alt="Логотип проекта Место" class="header__logo" src="./images/header-logo.svg">
     <hr class="header__border">
   </header>
 
   <main class="main page__main">
     <section class="profile">
       <div class="profile__info">
-        <img class="profile__image" src="./images/user-photo.jpg" alt="Фото пользователя">
+        <img alt="Фото пользователя" class="profile__image" src="./images/user-photo.jpg">
         <div class="profile__description">
           <h2 class="profile__title">Жак-Ив Кусто</h2>
           <p class="profile__subtitle">Исследователь океана</p>
@@ -29,56 +29,56 @@
     <section class="gallery">
       <ul class="gallery__items">
         <li class="gallery__item">
-          <img class="gallery__photo" src="./images/photo-karachaevsk.jpg" alt="Вид на крепость в Карачаевске">
+          <img alt="Вид на крепость в Карачаевске" class="gallery__photo" src="./images/photo-karachaevsk.jpg">
           <div class="gallery__subscription">
             <h2 class="gallery__title">Карачаевск</h2>
             <div class="gallery__like-container">
-            <button class="gallery__like gallery__like_active" type="button"></button>
+              <button class="gallery__like gallery__like_active" type="button"></button>
             </div>
           </div>
         </li>
         <li class="gallery__item">
-          <img class="gallery__photo" src="./images/photo-elbrus.jpg" alt="Вид на Эльбрус на закате">>
+          <img alt="Вид на Эльбрус на закате" class="gallery__photo" src="./images/photo-elbrus.jpg">>
           <div class="gallery__subscription">
             <h2 class="gallery__title">Гора Эльбрус</h2>
             <div class="gallery__like-container">
-            <button class="gallery__like gallery__like_active" type="button"></button>
+              <button class="gallery__like gallery__like_active" type="button"></button>
             </div>
           </div>
         </li>
         <li class="gallery__item">
-          <img class="gallery__photo" src="./images/photo-dombai.jpg" alt="Вид на горы Домбая">
+          <img alt="Вид на горы Домбая" class="gallery__photo" src="./images/photo-dombai.jpg">
           <div class="gallery__subscription">
             <h2 class="gallery__title">Домбай</h2>
             <div class="gallery__like-container">
-            <button class="gallery__like gallery__like_active" type="button"></button>
+              <button class="gallery__like gallery__like_active" type="button"></button>
             </div>
           </div>
         </li>
         <li class="gallery__item">
-          <img class="gallery__photo" src="./images/photo-elbrus.jpg" alt="Вид на Эльбрус на закате">
+          <img alt="Вид на Эльбрус на закате" class="gallery__photo" src="./images/photo-elbrus.jpg">
           <div class="gallery__subscription">
             <h2 class="gallery__title">Гора Эльбрус</h2>
             <div class="gallery__like-container">
-            <button class="gallery__like gallery__like_active" type="button"></button>
+              <button class="gallery__like gallery__like_active" type="button"></button>
             </div>
           </div>
         </li>
         <li class="gallery__item">
-          <img class="gallery__photo" src="./images/photo-dombai.jpg" alt="Вид на горы Домбая">
+          <img alt="Вид на горы Домбая" class="gallery__photo" src="./images/photo-dombai.jpg">
           <div class="gallery__subscription">
             <h2 class="gallery__title">Домбай</h2>
             <div class="gallery__like-container">
-            <button class="gallery__like gallery__like_active" type="button"></button>
+              <button class="gallery__like gallery__like_active" type="button"></button>
             </div>
           </div>
         </li>
         <li class="gallery__item">
-          <img class="gallery__photo" src="./images/photo-karachaevsk.jpg" alt="Вид на крепость в Карачаевске">
+          <img alt="Вид на крепость в Карачаевске" class="gallery__photo" src="./images/photo-karachaevsk.jpg">
           <div class="gallery__subscription">
             <h2 class="gallery__title">Карачаево-Черкесия</h2>
             <div class="gallery__like-container">
-            <button class="gallery__like gallery__like_active" type="button"></button>
+              <button class="gallery__like gallery__like_active" type="button"></button>
             </div>
           </div>
         </li>
@@ -94,8 +94,11 @@
       <button class="popup__close" type="button" value="Закрыть окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form">
-        <input class="popup__item" id="user-name" type="text" name="user-name" placeholder="Жак-Ив Кусто" minlength="2" maxlength="15" required>
-        <input class="popup__item" id="about-me" type="text" name="about-me" placeholder="Исследователь океана" minlength="5" maxlength="30" required>
+        <input class="popup__item" id="user-name" maxlength="15" minlength="2" name="user-name"
+               placeholder="Жак-Ив Кусто"
+               required type="text">
+        <input class="popup__item" id="about-me" maxlength="30" minlength="5" name="about-me"
+               placeholder="Исследователь океана" required type="text">
         <button class="popup__button popup__button_edit" type="submit" value="Сохранить">Сохранить</button>
       </form>
     </div>
