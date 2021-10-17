@@ -1,0 +1,33 @@
+.popup__item {
+  max-width: 358px;
+  padding: 27px 0 10px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.popup__item::placeholder {
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  color: #000000;
+}
+
+.popup__item::-webkit-input-placeholder {
+  color: #000000;
+  opacity: 1;
+}
+
+.popup__item::-moz-placeholder {
+  color: #000000;
+  opacity: 1;
+}
+
+.popup__item::-ms-input-placeholder {
+  color: #000000;
+  opacity: 1;
+}
+
+.popup__item:focus {
+  outline: none;
+}
