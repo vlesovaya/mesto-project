@@ -8,3 +8,10 @@
   color: #000000;
   box-sizing: border-box;
 }
+
+@media screen and (max-width: 714px) {
+  .popup__content {
+    width: 282px;
+    padding: 25px 22px;
+  }
+}
