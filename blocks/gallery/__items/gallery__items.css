@@ -1,13 +1,14 @@
 .gallery__items {
   display: grid;
   max-width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, 282px);
   column-gap: 17px;
   row-gap: 20px;
   grid-auto-rows: 1fr;
   padding: 0;
-  margin: 0;
   list-style: none;
+  justify-content: center;
 }
 
 
