@@ -1,9 +1,25 @@
 .profile__description {
-  padding: 0 42px 0 30px;
+  display: grid;
+  grid-template-areas:
+    "profile__title profile__edit-button"
+    "profile__subtitle profile__subtitle";
+  grid-template-columns: 294px 24px;
+  column-gap: 18px;
+  row-gap: 10px;
+  margin: 5px 0 0;
 }
 
 @media screen and (max-width: 714px) {
   .profile__description {
-    padding: 0;
+    margin-top: 27px;
+    margin-left: 29px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .profile__description {
+    grid-template-columns: 189px 18px;
+    column-gap: 10px;
+    row-gap: 8px;
   }
 }

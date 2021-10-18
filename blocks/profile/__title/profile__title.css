@@ -1,40 +1,18 @@
 .profile__title {
   position: relative;
-  margin: 30px 0 0;
-  padding: 0 42px 0 0;
+  /*margin: 30px 0 0;*/
+  /*padding: 0 42px 0 0;*/
+  margin: 0;
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
+  grid-area: profile__title;
+
 }
 
-.profile__title:before {
-  content: '';
-  position: absolute;
-  background: url("../../../images/edit-button.svg");
-  top: 15px;
-  right: 0;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-}
-
-.profile__title:hover:before {
-  opacity: 0.6;
-}
-
-@media screen and (max-width: 714px) {
+@media screen and (max-width: 550px) {
   .profile__title {
-    margin: 25px 0 0 25px;
-    /*padding: 0 30px 0 0;*/
     font-size: 27px;
     line-height: 33px;
   }
-
-  .profile__title:before {
-    width: 18px;
-    height: 18px;
-    background: url("../../../images/edit-button-mobile.svg");
-    top: 10px;
-  }
 }
-
