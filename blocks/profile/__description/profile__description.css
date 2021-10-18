@@ -2,7 +2,7 @@
   display: grid;
   grid-template-areas:
     "profile__title profile__edit-button"
-    "profile__subtitle profile__subtitle";
+    "profile__subtitle .";
   grid-template-columns: 294px 24px;
   column-gap: 18px;
   row-gap: 10px;

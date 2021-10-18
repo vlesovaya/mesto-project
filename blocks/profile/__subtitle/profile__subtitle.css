@@ -8,7 +8,9 @@
 
 @media screen and (max-width: 714px) {
   .profile__subtitle {
-    margin-left: 45px;
+    max-width: 100%;
+    align-self: center;
+    margin: 0 auto;
   }
 }
 
@@ -16,6 +18,5 @@
   .profile__subtitle {
     font-size: 14px;
     line-height: 17px;
-    margin-left: 15px;
   }
 }
