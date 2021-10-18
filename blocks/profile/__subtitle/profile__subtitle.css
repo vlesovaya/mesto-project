@@ -4,9 +4,6 @@
   line-height: 22px;
   font-weight: 400;
   grid-area: profile__subtitle;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 @media screen and (max-width: 714px) {
