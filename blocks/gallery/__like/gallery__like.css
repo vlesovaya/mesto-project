@@ -1,7 +1,6 @@
 .gallery__like {
   width: 22px;
   height: 19px;
-  margin: 0 0 0 20px;
   background-image: url("../../../images/heart-button.svg");
   background-repeat: no-repeat;
   top: 0;
@@ -16,16 +15,6 @@
   opacity: 0.5;
 }
 
-.gallery__like:active {
-  opacity: 1;
-  background-image: url("../../../images/heart-button-active.svg");
-}
-
 .gallery__like:disabled {
   opacity: 1;
 }
-
-/*.gallery__like-container {*/
-/*  margin: 0 0 0 20px;*/
-/*}*/
-

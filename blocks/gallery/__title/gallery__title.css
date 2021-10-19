@@ -1,5 +1,6 @@
 .gallery__title {
   display: block;
+  max-width: 190px;
   font-size: 24px;
   line-height: 29px;
   font-weight: 900;
