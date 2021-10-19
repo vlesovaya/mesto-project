@@ -7,7 +7,7 @@
   <link href="page/index.css" rel="stylesheet">
 </head>
 <body class="body">
-<div class="page page__centered">
+<div class="page">
 
   <header class="header page__header">
     <img alt="Логотип проекта Место" class="header__logo" src="./images/header-logo.svg">
@@ -31,54 +31,42 @@
           <img alt="Вид на крепость в Карачаевске" class="gallery__photo" src="./images/photo-karachaevsk.jpg">
           <div class="gallery__subscription">
             <h2 class="gallery__title">Карачаевск</h2>
-            <div class="gallery__like-container">
-              <button class="gallery__like gallery__like_active" type="button"></button>
-            </div>
+            <button class="gallery__like gallery__like_active" type="button"></button>
           </div>
         </li>
         <li class="gallery__item">
           <img alt="Вид на Эльбрус на закате" class="gallery__photo" src="./images/photo-elbrus.jpg">>
           <div class="gallery__subscription">
             <h2 class="gallery__title">Гора Эльбрус</h2>
-            <div class="gallery__like-container">
-              <button class="gallery__like gallery__like_active" type="button"></button>
-            </div>
+            <button class="gallery__like gallery__like_active" type="button"></button>
           </div>
         </li>
         <li class="gallery__item">
           <img alt="Вид на горы Домбая" class="gallery__photo" src="./images/photo-dombai.jpg">
           <div class="gallery__subscription">
             <h2 class="gallery__title">Домбай</h2>
-            <div class="gallery__like-container">
-              <button class="gallery__like gallery__like_active" type="button"></button>
-            </div>
+            <button class="gallery__like gallery__like_active" type="button"></button>
           </div>
         </li>
         <li class="gallery__item">
           <img alt="Вид на Эльбрус на закате" class="gallery__photo" src="./images/photo-elbrus.jpg">
           <div class="gallery__subscription">
             <h2 class="gallery__title">Гора Эльбрус</h2>
-            <div class="gallery__like-container">
-              <button class="gallery__like gallery__like_active" type="button"></button>
-            </div>
+            <button class="gallery__like gallery__like_active" type="button"></button>
           </div>
         </li>
         <li class="gallery__item">
           <img alt="Вид на горы Домбая" class="gallery__photo" src="./images/photo-dombai.jpg">
           <div class="gallery__subscription">
             <h2 class="gallery__title">Домбай</h2>
-            <div class="gallery__like-container">
-              <button class="gallery__like gallery__like_active" type="button"></button>
-            </div>
+            <button class="gallery__like gallery__like_active" type="button"></button>
           </div>
         </li>
         <li class="gallery__item">
           <img alt="Вид на крепость в Карачаевске" class="gallery__photo" src="./images/photo-karachaevsk.jpg">
           <div class="gallery__subscription">
             <h2 class="gallery__title">Карачаево-Черкесия</h2>
-            <div class="gallery__like-container">
-              <button class="gallery__like gallery__like_active" type="button"></button>
-            </div>
+            <button class="gallery__like gallery__like_active" type="button"></button>
           </div>
         </li>
       </ul>
@@ -93,11 +81,11 @@
       <button class="popup__close" type="button" value="Закрыть окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form">
-        <input class="popup__item" id="user-name" type="text" maxlength="15" minlength="2" name="user-name"
-               value="Имя" placeholder="Жак-Ив Кусто"
-               required>
-        <input class="popup__item" id="about-me" type="text" maxlength="30" minlength="5" name="about-me"
-               placeholder="Исследователь океана" value="О себе" required>
+        <input class="popup__item" id="user-name" maxlength="15" minlength="2" name="user-name" placeholder="Жак-Ив Кусто"
+               required type="text"
+               value="Имя">
+        <input class="popup__item" id="about-me" maxlength="30" minlength="5" name="about-me" placeholder="Исследователь океана"
+               required type="text" value="О себе">
         <button class="popup__button popup__button_edit" type="submit" value="Сохранить">Сохранить</button>
       </form>
     </div>
