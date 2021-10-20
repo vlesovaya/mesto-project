@@ -1,4 +1,6 @@
 .gallery__photo {
+  max-width: 282px;
+  min-height: 282px;
   object-fit: cover;
   grid-area: gallery__photo;
   border-radius: 10px 10px 0 0;
