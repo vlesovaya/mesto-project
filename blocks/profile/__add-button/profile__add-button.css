@@ -1,24 +1,43 @@
 .profile__add-button {
+  /*position: relative;*/
   display: block;
   width: 150px;
   height: 50px;
-  border: #ffffff;
-  background-image: url("../../../images/add-button-desctop.svg");
-  background-color: #000000;
-  background-repeat: no-repeat;
+  /*border: #ffffff;*/
+  /*background-image: url("../../../images/add-button-desctop.svg");*/
+  /*background-color: #000000;*/
+  /*background-repeat: no-repeat;*/
   align-self: center;
   cursor: pointer;
   flex-grow: inherit;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 2px;
+  background-color: #000000;
+}
+
+.profile__add-button:before {
+  content: url("../../../images/add-button-plus.svg");
 }
 
 .profile__add-button:hover {
   opacity: 0.6;
 }
 
+@media screen and (max-width: 915px) {
+  .profile__add-button {
+    width: 50px;
+  }
+}
+
 @media screen and (max-width: 714px) {
   .profile__add-button {
-    background-image: url("../../../images/add-button-mobile.svg");
+    /*background-image: url("../../../images/add-button-mobile.svg");*/
     width: 282px;
     margin: 34px 0 0;
+  }
+
+  .profile__add-button:before {
+    content: url("../../../images/add-button-plus-mobile.svg");
   }
 }
