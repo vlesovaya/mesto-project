@@ -1,12 +1,7 @@
 .profile__add-button {
-  /*position: relative;*/
   display: block;
   width: 150px;
   height: 50px;
-  /*border: #ffffff;*/
-  /*background-image: url("../../../images/add-button-desctop.svg");*/
-  /*background-color: #000000;*/
-  /*background-repeat: no-repeat;*/
   align-self: center;
   cursor: pointer;
   flex-grow: inherit;
@@ -32,7 +27,6 @@
 
 @media screen and (max-width: 714px) {
   .profile__add-button {
-    /*background-image: url("../../../images/add-button-mobile.svg");*/
     width: 282px;
     margin: 34px 0 0;
   }
