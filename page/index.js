@@ -1,16 +1,36 @@
+//edit-popup///
+
 let profileEditButton = document.querySelector('.profile__edit-button');
-let renderPopup = document.querySelector('.popup');
-let popupCloseButton = renderPopup.querySelector('.popup__close');
+let editPopup = document.querySelector('.popup_edit');
+let editCloseButton = editPopup.querySelector('.popup__close_edit-button');
 
 profileEditButton.addEventListener('click', function (evt) {
   evt.preventDefault();
-  renderPopup.classList.add('popup_opened');
+  editPopup.classList.add('popup_opened');
 });
 
-popupCloseButton.addEventListener('click', function (evt) {
+editCloseButton.addEventListener('click', function (evt) {
   evt.preventDefault();
-  renderPopup.classList.remove('popup_opened');
+  editPopup.classList.remove('popup_opened');
 });
+
+//add-popup//
+
+let postAddButton = document.querySelector('.profile__add-button');
+let addPopup = document.querySelector('.popup_add');
+let addCloseButton = addPopup.querySelector('.popup__close_add-button');
+
+postAddButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  addPopup.classList.add('popup_opened');
+});
+
+addCloseButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  addPopup.classList.remove('popup_opened');
+});
+
+//gallery-like//
 
 let likeButtons = document.querySelectorAll('.gallery__like');
 
