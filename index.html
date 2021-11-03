@@ -80,13 +80,27 @@
     <div class="popup__content">
       <button class="popup__close" type="button" value="Закрыть окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="edit-form">
+      <form class="popup__form" name="edit-form" autocomplete="off">
         <input class="popup__item" id="user-name" maxlength="15" minlength="2" name="user-name" placeholder="Имя"
                required type="text"
                value="Жак-Ив Кусто">
         <input class="popup__item" id="about-me" maxlength="30" minlength="5" name="about-me" placeholder="О себе"
                required type="text" value="Исследователь океана">
         <button class="popup__button popup__button_type_save" type="submit" value="Сохранить">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="popup">
+    <div class="popup__content">
+      <button class="popup__close" type="button" value="Закрыть окно"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" name="edit-form" autocomplete="off">
+        <input class="popup__item" id="image-title" maxlength="15" minlength="2" name="image-title" placeholder="Название"
+               required type="text" value="Горный Алтай">
+        <input class="popup__item" id="image-link" name="image-link" placeholder="Ссылка на картинку"
+               required type="text" value="https://unsplash.com/example.jpg">
+        <button class="popup__button popup__button_type_save" type="submit" value="Сохранить">Создать</button>
       </form>
     </div>
   </section>

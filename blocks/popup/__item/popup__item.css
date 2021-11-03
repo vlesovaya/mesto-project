@@ -11,20 +11,20 @@
   font-size: 14px;
   line-height: 17px;
   font-weight: 400;
-  color: #000000;
+  color: #C4C4C4;
 }
 
 .popup__item::-webkit-input-placeholder {
-  color: #000000;
+  color: #C4C4C4;
   opacity: 1;
 }
 
 .popup__item::-moz-placeholder {
-  color: #000000;
+  color: #C4C4C4;
   opacity: 1;
 }
 
 .popup__item::-ms-input-placeholder {
-  color: #000000;
+  color: #C4C4C4;
   opacity: 1;
 }
