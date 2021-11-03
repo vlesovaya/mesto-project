@@ -1,0 +1,18 @@
+.gallery__trash-button {
+  position: absolute;
+  width: 18px;
+  height: 19px;
+  background-image: url("../../../images/trash-button.svg");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  top: 20px;
+  right: 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 1s ease-in;
+}
+
+.gallery__trash-button:hover {
+  opacity: 0.6;
+}
