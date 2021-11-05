@@ -1,7 +1,7 @@
 //edit-popup///
 
 let profileEditButton = document.querySelector('.profile__edit-button');
-let editPopup = document.querySelector('.popup_edit');
+let editPopup = document.querySelector('.popup_type_edit');
 let editCloseButton = editPopup.querySelector('.popup__close_edit-button');
 
 profileEditButton.addEventListener('click', function (evt) {
@@ -17,7 +17,7 @@ editCloseButton.addEventListener('click', function (evt) {
 //add-popup//
 
 let postAddButton = document.querySelector('.profile__add-button');
-let addPopup = document.querySelector('.popup_add');
+let addPopup = document.querySelector('.popup_type_add');
 let addCloseButton = addPopup.querySelector('.popup__close_add-button');
 
 postAddButton.addEventListener('click', function (evt) {
