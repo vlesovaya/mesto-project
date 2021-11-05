@@ -36,7 +36,7 @@
           <button class="gallery__trash-button" type="button"></button>
         </li>
         <li class="gallery__item">
-          <img alt="Вид на Эльбрус на закате" class="gallery__photo" src="./images/photo-elbrus.jpg">>
+          <img alt="Вид на Эльбрус на закате" class="gallery__photo" src="./images/photo-elbrus.jpg">
           <div class="gallery__subscription">
             <h2 class="gallery__title">Гора Эльбрус</h2>
             <button class="gallery__like" type="button"></button>
@@ -82,29 +82,29 @@
     <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
   </footer>
 
-  <section class="popup popup_edit">
+  <section class="popup popup_type_edit">
     <div class="popup__content">
       <button class="popup__close popup__close_edit-button" type="button" value="Закрыть окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="edit-form" autocomplete="off">
-        <input class="popup__item" id="user-name" maxlength="15" minlength="2" name="user-name" placeholder="Имя"
+        <input class="popup__item popup__item_type_user-name" id="user-name" maxlength="30" minlength="2" name="user-name" placeholder="Имя"
                required type="text"
                value="Жак-Ив Кусто">
-        <input class="popup__item" id="about-me" maxlength="30" minlength="5" name="about-me" placeholder="О себе"
+        <input class="popup__item popup__item_type_about-me" id="about-me" maxlength="30" minlength="5" name="about-me" placeholder="О себе"
                required type="text" value="Исследователь океана">
         <button class="popup__button popup__button_type_save" type="submit" value="Сохранить">Сохранить</button>
       </form>
     </div>
   </section>
 
-  <section class="popup popup_add">
+  <section class="popup popup_type_add">
     <div class="popup__content">
       <button class="popup__close popup__close_add-button" type="button" value="Закрыть окно"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" name="edit-form" autocomplete="off">
-        <input class="popup__item" id="image-title" maxlength="15" minlength="2" name="image-title" placeholder="Название"
+      <form class="popup__form" name="add-form" autocomplete="off">
+        <input class="popup__item popup__item_type_image-title" id="image-title" maxlength="15" minlength="2" name="image-title" placeholder="Название"
                required type="text" value="Горный Алтай">
-        <input class="popup__item" id="image-link" name="image-link" placeholder="Ссылка на картинку"
+        <input class="popup__item popup__item_type_image-link" id="image-link" name="image-link" placeholder="Ссылка на картинку"
                required type="text" value="https://unsplash.com/example.jpg">
         <button class="popup__button popup__button_type_save" type="submit" value="Сохранить">Создать</button>
       </form>

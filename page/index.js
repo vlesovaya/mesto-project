@@ -1,24 +1,28 @@
-//edit-popup///
+//edit-popup opening and closing///
 
-let profileEditButton = document.querySelector('.profile__edit-button');
-let editPopup = document.querySelector('.popup_edit');
-let editCloseButton = editPopup.querySelector('.popup__close_edit-button');
+const profileEditButton = document.querySelector('.profile__edit-button');
+const editPopup = document.querySelector('.popup_type_edit');
+const editCloseButton = editPopup.querySelector('.popup__close_edit-button');
 
-profileEditButton.addEventListener('click', function (evt) {
+function openEditPopup(evt) {
   evt.preventDefault();
   editPopup.classList.add('popup_opened');
-});
+}
 
-editCloseButton.addEventListener('click', function (evt) {
+profileEditButton.addEventListener('click', openEditPopup);
+
+function closeEditPopup(evt) {
   evt.preventDefault();
   editPopup.classList.remove('popup_opened');
-});
+}
 
-//add-popup//
+editCloseButton.addEventListener('click', closeEditPopup);
 
-let postAddButton = document.querySelector('.profile__add-button');
-let addPopup = document.querySelector('.popup_add');
-let addCloseButton = addPopup.querySelector('.popup__close_add-button');
+//add-popup opening and closing//
+
+const postAddButton = document.querySelector('.profile__add-button');
+const addPopup = document.querySelector('.popup_type_add');
+const addCloseButton = addPopup.querySelector('.popup__close_add-button');
 
 postAddButton.addEventListener('click', function (evt) {
   evt.preventDefault();
@@ -29,6 +33,30 @@ addCloseButton.addEventListener('click', function (evt) {
   evt.preventDefault();
   addPopup.classList.remove('popup_opened');
 });
+
+//edit profile and save//
+
+const formElement = document.querySelector('.popup__form');
+const nameInput = document.querySelector('.popup__item_type_user-name');
+const infoInput = document.querySelector('.popup__item_type_about-me');
+
+function formSubmitHandler(evt) {
+  evt.preventDefault();
+
+  const name = nameInput.value;
+  const info = infoInput.value;
+
+  const profileTitle = document.querySelector('.profile__title');
+  const profileSubtitle = document.querySelector('.profile__subtitle');
+
+  profileTitle.textContent = name;
+  profileSubtitle.textContent = info;
+
+  closeEditPopup(evt);
+}
+
+formElement.addEventListener('submit', formSubmitHandler);
+
 
 //gallery-like//
 
