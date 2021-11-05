@@ -13,6 +13,16 @@ profileEditButton.addEventListener('click', openEditPopup);
 
 function closeEditPopup(evt) {
   evt.preventDefault();
+
+  const nameInput = document.querySelector('.popup__item_type_user-name');
+  const infoInput = document.querySelector('.popup__item_type_about-me');
+
+  const profileTitle = document.querySelector('.profile__title');
+  const profileSubtitle = document.querySelector('.profile__subtitle');
+
+  nameInput.value = profileTitle.textContent;
+  infoInput.value = profileSubtitle.textContent;
+
   editPopup.classList.remove('popup_opened');
 }
 
@@ -37,11 +47,12 @@ addCloseButton.addEventListener('click', function (evt) {
 //edit profile and save//
 
 const formElement = document.querySelector('.popup__form');
-const nameInput = document.querySelector('.popup__item_type_user-name');
-const infoInput = document.querySelector('.popup__item_type_about-me');
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
+
+  const nameInput = document.querySelector('.popup__item_type_user-name');
+  const infoInput = document.querySelector('.popup__item_type_about-me');
 
   const name = nameInput.value;
   const info = infoInput.value;
