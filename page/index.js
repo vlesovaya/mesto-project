@@ -30,25 +30,27 @@ editCloseButton.addEventListener('click', closeEditPopup);
 
 //add-popup opening and closing//
 
-const postAddButton = document.querySelector('.profile__add-button');
-const addPopup = document.querySelector('.popup_type_add');
-const addCloseButton = addPopup.querySelector('.popup__close_add-button');
+const createCardButton = document.querySelector('.profile__add-button');
+const createCardPopup = document.querySelector('.popup_type_add');
+const createCardCloseButton = createCardPopup.querySelector('.popup__close_add-button');
 
-postAddButton.addEventListener('click', function (evt) {
+function closeCreatePopup(evt) {
   evt.preventDefault();
-  addPopup.classList.add('popup_opened');
+  createCardPopup.classList.remove('popup_opened');
+}
+
+createCardButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  createCardPopup.classList.add('popup_opened');
 });
 
-addCloseButton.addEventListener('click', function (evt) {
-  evt.preventDefault();
-  addPopup.classList.remove('popup_opened');
-});
+createCardCloseButton.addEventListener('click', closeCreatePopup);
 
 //edit profile and save//
 
-const formElement = document.querySelector('.popup__form');
+const editFormElement = document.querySelector('.popup__form_type_edit');
 
-function formSubmitHandler(evt) {
+function editFormSubmitHandler(evt) {
   evt.preventDefault();
 
   const nameInput = document.querySelector('.popup__item_type_user-name');
@@ -66,21 +68,74 @@ function formSubmitHandler(evt) {
   closeEditPopup(evt);
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
-
+editFormElement.addEventListener('submit', editFormSubmitHandler)
 
 //gallery-like//
 
-let likeButtons = document.querySelectorAll('.gallery__like');
+function addLikeButtonsProcessing() {
+  let likeButtons = document.querySelectorAll('.gallery__like');
 
-for (let i = 0; i < likeButtons.length; i += 1) {
-  let likeButton = likeButtons[i];
-  likeButton.addEventListener('click', function (evt) {
-    evt.preventDefault();
-    if (likeButton.classList.contains('gallery__like_active')) {
-      likeButton.classList.remove('gallery__like_active');
-    } else {
-      likeButton.classList.add('gallery__like_active');
-    }
-  });
+  for (let i = 0; i < likeButtons.length; i += 1) {
+    let likeButton = likeButtons[i];
+    likeButton.addEventListener('click', function (evt) {
+      evt.preventDefault();
+      if (likeButton.classList.contains('gallery__like_active')) {
+        likeButton.classList.remove('gallery__like_active');
+      } else {
+        likeButton.classList.add('gallery__like_active');
+      }
+    });
+  }
 }
+
+addLikeButtonsProcessing();
+
+//add-card//
+
+function addCard(name, link) {
+
+  const cards = document.querySelector('.gallery__items');
+
+  const listItem = document.createElement('li');
+  listItem.classList.add('gallery__item');
+
+  const imageElement = document.createElement('img');
+  imageElement.classList.add('gallery__photo');
+  imageElement.src = link;
+
+  const divElement = document.createElement('div');
+  divElement.classList.add('gallery__subscription');
+
+  const textElement = document.createElement('h2');
+  textElement.classList.add('gallery__title');
+  textElement.textContent = name;
+
+  const likeButtonElement = document.createElement('button');
+  likeButtonElement.classList.add('gallery__like');
+
+  const trashButtonElement = document.createElement('button');
+  trashButtonElement.classList.add('gallery__trash-button');
+
+  divElement.append(textElement, likeButtonElement);
+  listItem.append(imageElement, divElement, trashButtonElement);
+  cards.prepend(listItem);
+}
+
+const createFormElement = document.querySelector('.popup__form_type_create');
+
+function createFormSubmitHandler(evt) {
+  evt.preventDefault();
+  const title = document.querySelector('.popup__item_type_image-title');
+  const link = document.querySelector('.popup__item_type_image-link');
+  addCard(title.value, link.value);
+
+  title.value = '';
+  link.value = '';
+
+  addLikeButtonsProcessing();
+
+  closeCreatePopup(evt);
+}
+
+createFormElement.addEventListener('submit', createFormSubmitHandler);
+
