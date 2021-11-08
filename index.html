@@ -86,7 +86,7 @@
     <div class="popup__content">
       <button class="popup__close popup__close_edit-button" type="button" value="Закрыть окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="edit-form" autocomplete="off">
+      <form class="popup__form popup__form_type_edit" name="edit-form" autocomplete="off">
         <input class="popup__item popup__item_type_user-name" id="user-name" maxlength="30" minlength="2" name="user-name" placeholder="Имя"
                required type="text"
                value="Жак-Ив Кусто">
@@ -101,12 +101,12 @@
     <div class="popup__content">
       <button class="popup__close popup__close_add-button" type="button" value="Закрыть окно"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" name="add-form" autocomplete="off">
+      <form class="popup__form popup__form_type_create" name="add-form" autocomplete="off">
         <input class="popup__item popup__item_type_image-title" id="image-title" maxlength="15" minlength="2" name="image-title" placeholder="Название"
                required type="text" value="Горный Алтай">
         <input class="popup__item popup__item_type_image-link" id="image-link" name="image-link" placeholder="Ссылка на картинку"
                required type="text" value="https://unsplash.com/example.jpg">
-        <button class="popup__button popup__button_type_save" type="submit" value="Сохранить">Создать</button>
+        <button class="popup__button popup__button_type_create" type="submit" value="Создать">Создать</button>
       </form>
     </div>
   </section>
