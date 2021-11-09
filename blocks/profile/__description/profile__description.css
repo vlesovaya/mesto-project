@@ -3,7 +3,7 @@
   grid-template-areas:
     "profile__title profile__edit-button"
     "profile__subtitle .";
-  grid-template-columns: 294px 24px;
+  grid-template-columns: fit-content(294px) 24px;
   column-gap: 18px;
   row-gap: 10px;
   margin: 5px 0 0;
@@ -18,7 +18,7 @@
 
 @media screen and (max-width: 550px) {
   .profile__description {
-    grid-template-columns: 189px 18px;
+    grid-template-columns: fit-content(189px) 18px;
     column-gap: 10px;
     row-gap: 8px;
   }
