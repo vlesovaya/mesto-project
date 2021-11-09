@@ -94,7 +94,6 @@ addLikeButtonsProcessing();
 //add-card//
 
 function addCard(name, link) {
-
   const cardTemplate = document.querySelector('#gallery-template').content;
   const cardElement = cardTemplate.querySelector('.gallery__item').cloneNode(true);
 
@@ -107,6 +106,13 @@ function addCard(name, link) {
     } else {
       evt.target.classList.toggle('gallery__like_active');
     }
+  });
+
+  const removeButton = cardElement.querySelector('.gallery__trash-button');
+
+  removeButton.addEventListener('click', function () {
+    const card = removeButton.closest('.gallery__item')
+    card.remove();
   });
 
   cardsContainer.prepend(cardElement);
@@ -126,3 +132,4 @@ function createFormSubmitHandler(evt) {
   closeCreatePopup(evt);
 }
 createFormElement.addEventListener('submit', createFormSubmitHandler);
+
