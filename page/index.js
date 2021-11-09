@@ -3,6 +3,7 @@
 const profileEditButton = document.querySelector('.profile__edit-button');
 const editPopup = document.querySelector('.popup_type_edit');
 const editCloseButton = editPopup.querySelector('.popup__close_edit-button');
+const cardsContainer = document.querySelector('.gallery__items');
 
 function openEditPopup(evt) {
   evt.preventDefault();
@@ -94,31 +95,21 @@ addLikeButtonsProcessing();
 
 function addCard(name, link) {
 
-  const cards = document.querySelector('.gallery__items');
+  const cardTemplate = document.querySelector('#gallery-template').content;
+  const cardElement = cardTemplate.querySelector('.gallery__item').cloneNode(true);
 
-  const listItem = document.createElement('li');
-  listItem.classList.add('gallery__item');
+  cardElement.querySelector('.gallery__photo').src = link;
+  cardElement.querySelector('.gallery__title').textContent = name;
 
-  const imageElement = document.createElement('img');
-  imageElement.classList.add('gallery__photo');
-  imageElement.src = link;
+  cardElement.querySelector('.gallery__like').addEventListener('click', function (evt) {
+    if (evt.target.classList.contains('gallery__like_active')) {
+      evt.target.classList.remove('gallery__like_active');
+    } else {
+      evt.target.classList.toggle('gallery__like_active');
+    }
+  });
 
-  const divElement = document.createElement('div');
-  divElement.classList.add('gallery__subscription');
-
-  const textElement = document.createElement('h2');
-  textElement.classList.add('gallery__title');
-  textElement.textContent = name;
-
-  const likeButtonElement = document.createElement('button');
-  likeButtonElement.classList.add('gallery__like');
-
-  const trashButtonElement = document.createElement('button');
-  trashButtonElement.classList.add('gallery__trash-button');
-
-  divElement.append(textElement, likeButtonElement);
-  listItem.append(imageElement, divElement, trashButtonElement);
-  cards.prepend(listItem);
+  cardsContainer.prepend(cardElement);
 }
 
 const createFormElement = document.querySelector('.popup__form_type_create');
@@ -132,10 +123,6 @@ function createFormSubmitHandler(evt) {
   title.value = '';
   link.value = '';
 
-  addLikeButtonsProcessing();
-
   closeCreatePopup(evt);
 }
-
 createFormElement.addEventListener('submit', createFormSubmitHandler);
-
