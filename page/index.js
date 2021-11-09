@@ -38,6 +38,12 @@ const createCardCloseButton = createCardPopup.querySelector('.popup__close_add-b
 function closeCreatePopup(evt) {
   evt.preventDefault();
   createCardPopup.classList.remove('popup_opened');
+
+  const titleInput = document.querySelector('.popup__item_type_image-title');
+  const linkInput = document.querySelector('.popup__item_type_image-link');
+
+  titleInput.value = '';
+  linkInput.value = '';
 }
 
 createCardButton.addEventListener('click', function (evt) {
@@ -132,4 +138,3 @@ function createFormSubmitHandler(evt) {
   closeCreatePopup(evt);
 }
 createFormElement.addEventListener('submit', createFormSubmitHandler);
-
