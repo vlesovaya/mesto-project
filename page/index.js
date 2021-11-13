@@ -7,7 +7,6 @@ const createCardButton = document.querySelector('.profile__add-button');
 const createCardPopup = document.querySelector('.popup_type_add');
 const createCardCloseButton = createCardPopup.querySelector('.popup__close_add-button');
 
-const cardImage = document.querySelector('.gallery__photo');
 const imagePopup = document.querySelector('.popup_type_image');
 const imageCloseButton = document.querySelector('.popup__close_type_image');
 
