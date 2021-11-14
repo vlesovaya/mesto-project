@@ -99,7 +99,9 @@ function showImagePopup(name, link) {
 
 function createFormSubmitHandler(evt) {
   evt.preventDefault();
-  createCard(titleInput.value, linkInput.value);
+
+  const cardElement = createCard(titleInput.value, linkInput.value);
+  addCard(cardsContainer, cardElement);
 
   createCardForm.reset();
 
