@@ -10,13 +10,15 @@
 <div class="page">
 
   <header class="header page__header">
-    <img alt="Логотип проекта Место" class="header__logo" src="./images/header-logo.svg">
+    <img alt="Логотип проекта Место" class="header__logo"
+         src="./images/header-logo.svg">
   </header>
 
   <main class="main page__main">
     <section class="profile">
       <div class="profile__info">
-        <img alt="Фото пользователя" class="profile__image" src="./images/user-photo.jpg">
+        <img alt="Фото пользователя" class="profile__image"
+             src="./images/user-photo.jpg">
         <div class="profile__description">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <p class="profile__subtitle">Исследователь океана</p>
@@ -36,29 +38,42 @@
 
   <section class="popup popup_type_edit">
     <div class="popup__content">
-      <button class="popup__close popup__close_edit-button" type="button" value="Закрыть окно"></button>
+      <button class="popup__close popup__close_edit-button" type="button"
+              value="Закрыть окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form popup__form_type_edit" name="edit-form" autocomplete="off">
-        <input class="popup__item popup__item_type_user-name" id="user-name" maxlength="30" minlength="2" name="user-name" placeholder="Имя"
+      <form autocomplete="off" class="popup__form popup__form_type_edit"
+            name="edit-form">
+        <input class="popup__item popup__item_type_user-name" id="user-name"
+               maxlength="30" minlength="2" name="user-name" placeholder="Имя"
                required type="text"
                value="Жак-Ив Кусто">
-        <input class="popup__item popup__item_type_about-me" id="about-me" maxlength="30" minlength="5" name="about-me" placeholder="О себе"
+        <input class="popup__item popup__item_type_about-me" id="about-me"
+               maxlength="30" minlength="5" name="about-me" placeholder="О себе"
                required type="text" value="Исследователь океана">
-        <button class="popup__button popup__button_type_save" type="submit" value="Сохранить">Сохранить</button>
+        <button class="popup__button popup__button_type_save" type="submit"
+                value="Сохранить">Сохранить
+        </button>
       </form>
     </div>
   </section>
 
   <section class="popup popup_type_add">
     <div class="popup__content">
-      <button class="popup__close popup__close_add-button" type="button" value="Закрыть окно"></button>
+      <button class="popup__close popup__close_add-button" type="button"
+              value="Закрыть окно"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form popup__form_type_create" name="add-form" autocomplete="off">
-        <input class="popup__item popup__item_type_image-title" id="image-title" maxlength="15" minlength="2" name="image-title" placeholder="Название"
+      <form autocomplete="off" class="popup__form popup__form_type_create"
+            name="add-form">
+        <input class="popup__item popup__item_type_image-title" id="image-title"
+               maxlength="15" minlength="2" name="image-title"
+               placeholder="Название"
                required type="text">
-        <input class="popup__item popup__item_type_image-link" id="image-link" name="image-link" placeholder="Ссылка на картинку"
+        <input class="popup__item popup__item_type_image-link" id="image-link"
+               name="image-link" placeholder="Ссылка на картинку"
                required type="url">
-        <button class="popup__button popup__button_type_create" type="submit" value="Создать">Создать</button>
+        <button class="popup__button popup__button_type_create" type="submit"
+                value="Создать">Создать
+        </button>
       </form>
     </div>
   </section>
@@ -67,7 +82,8 @@
     <div class="image-popup__content">
       <img class="image-popup__image">
       <h2 class="image-popup__image-title"></h2>
-      <button class="popup__close popup__close_type_image" type="button" value="Закрыть окно"></button>
+      <button class="popup__close popup__close_type_image" type="button"
+              value="Закрыть окно"></button>
     </div>
   </section>
 
