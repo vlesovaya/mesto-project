@@ -17,12 +17,12 @@ const infoInput = document.querySelector('.popup__item_type_about-me');
 const imagePopup = document.querySelector('.popup_type_image');
 const imageCloseButton = document.querySelector('.popup__close_type_image');
 
+const profileTitle = document.querySelector('.profile__title');
+const profileSubtitle = document.querySelector('.profile__subtitle');
+
 // Обработка закрытия модальных окон
 
 function onCloseEditPopup() {
-  const profileTitle = document.querySelector('.profile__title');
-  const profileSubtitle = document.querySelector('.profile__subtitle');
-
   nameInput.value = profileTitle.textContent;
   infoInput.value = profileSubtitle.textContent;
 }
@@ -75,9 +75,6 @@ imageCloseButton.addEventListener('click', function (evt) {
 function editFormSubmitHandler(evt) {
   evt.preventDefault();
 
-  const profileTitle = document.querySelector('.profile__title');
-  const profileSubtitle = document.querySelector('.profile__subtitle');
-
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = infoInput.value;
 
@@ -86,7 +83,7 @@ function editFormSubmitHandler(evt) {
 
 editForm.addEventListener('submit', editFormSubmitHandler)
 
-// Показ картинки
+// Открытие модального окна с фото
 
 function showImagePopup(name, link) {
   openPopup(imagePopup);
@@ -98,7 +95,7 @@ function showImagePopup(name, link) {
   popupImageTitle.textContent = name;
 }
 
-// Coздание картинки
+// Coздание карточки
 
 function createFormSubmitHandler(evt) {
   evt.preventDefault();
@@ -118,17 +115,18 @@ function createCard(name, link) {
   const cardElement = cardTemplate.querySelector('.gallery__item').cloneNode(true);
 
   const cardImage = cardElement.querySelector('.gallery__photo');
+  const cardTitle = cardElement.querySelector('.gallery__title');
+  const likeButton = cardElement.querySelector('.gallery__like');
+  const removeButton = cardElement.querySelector('.gallery__trash-button');
 
   cardImage.src = link;
   cardImage.alt = name;
 
-  cardElement.querySelector('.gallery__title').textContent = name;
+  cardTitle.textContent = name;
 
-  cardElement.querySelector('.gallery__like').addEventListener('click', function (evt) {
+  likeButton.addEventListener('click', function (evt) {
     evt.target.classList.toggle('gallery__like_active');
   });
-
-  const removeButton = cardElement.querySelector('.gallery__trash-button');
 
   removeButton.addEventListener('click', function () {
     const card = removeButton.closest('.gallery__item')
