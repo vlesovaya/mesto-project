@@ -92,6 +92,7 @@ function showImagePopup(name, link) {
   const popupImageTitle = imagePopup.querySelector('.image-popup__image-title');
 
   popupImage.src = link;
+  popupImage.alt = name;
   popupImageTitle.textContent = name;
 }
 
