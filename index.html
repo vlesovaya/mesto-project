@@ -47,9 +47,11 @@
                maxlength="30" minlength="2" name="user-name" placeholder="Имя"
                required type="text"
                value="Жак-Ив Кусто">
+        <span class="popup__input-error name-input-error"></span>
         <input class="popup__item popup__item_type_about-me" id="about-me"
                maxlength="30" minlength="5" name="about-me" placeholder="О себе"
                required type="text" value="Исследователь океана">
+        <span class="popup__input-error about-input-error"></span>
         <button class="popup__button popup__button_type_save" type="submit"
                 value="Сохранить">Сохранить
         </button>
@@ -68,10 +70,12 @@
                maxlength="15" minlength="2" name="image-title"
                placeholder="Название"
                required type="text">
+        <span class="popup__input-error title-input-error"></span>
         <input class="popup__item popup__item_type_image-link" id="image-link"
                name="image-link" placeholder="Ссылка на картинку"
                required type="url">
-        <button class="popup__button popup__button_type_create" type="submit"
+        <span class="popup__input-error link-input-error"></span>
+        <button class="popup__button popup__button_type_create" type="submit" disabled
                 value="Создать">Создать
         </button>
       </form>
