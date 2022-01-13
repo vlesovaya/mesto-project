@@ -3,18 +3,18 @@ const popups = document.querySelectorAll('.popup');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const editPopup = document.querySelector('.popup_type_edit');
 const editCloseButton = editPopup.querySelector('.popup__close_edit-button');
-const editForm = document.querySelector('.popup__form_type_edit');
+const editForm = document.forms['edit-form'];
 
 const cardsContainer = document.querySelector('.gallery__items');
 const createCardButton = document.querySelector('.profile__add-button');
 const createCardPopup = document.querySelector('.popup_type_add');
 const createCardCloseButton = createCardPopup.querySelector('.popup__close_add-button');
-const createCardForm = document.querySelector('.popup__form_type_create');
+const createCardForm = document.forms['add-form'];
 
-const titleInput = document.querySelector('.popup__item_type_image-title');
-const linkInput = document.querySelector('.popup__item_type_image-link');
-const nameInput = document.querySelector('.popup__item_type_user-name');
-const infoInput = document.querySelector('.popup__item_type_about-me');
+const title = createCardForm.elements['image-title'];
+const link = createCardForm.elements['image-link'];
+const name = editForm.elements['user-name'];
+const info = editForm.elements['about-me'];
 
 const imagePopup = document.querySelector('.popup_type_image');
 const imageCloseButton = document.querySelector('.popup__close_type_image');
@@ -25,8 +25,8 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 // Обработка закрытия модальных окон
 
 function onCloseEditPopup() {
-  nameInput.value = profileTitle.textContent;
-  infoInput.value = profileSubtitle.textContent;
+  name.value = profileTitle.textContent;
+  info.value = profileSubtitle.textContent;
 }
 
 function onCloseCreatePopup() {
@@ -98,13 +98,13 @@ for (let popup of popups) {
 function editFormSubmitHandler(evt) {
   evt.preventDefault();
 
-  profileTitle.textContent = nameInput.value;
-  profileSubtitle.textContent = infoInput.value;
+  profileTitle.textContent = name.value;
+  profileSubtitle.textContent = info.value;
 
   closePopup(editPopup);
 }
 
-editForm.addEventListener('submit', editFormSubmitHandler)
+editForm.addEventListener('submit', editFormSubmitHandler);
 
 // Открытие модального окна с фото
 
@@ -124,7 +124,7 @@ function showImagePopup(name, link) {
 function createFormSubmitHandler(evt) {
   evt.preventDefault();
 
-  const cardElement = createCard(titleInput.value, linkInput.value);
+  const cardElement = createCard(title.value, link.value);
   addCard(cardsContainer, cardElement);
 
   createCardForm.reset();
