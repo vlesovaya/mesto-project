@@ -49,6 +49,7 @@ profileEditButton.addEventListener('click', function (evt) {
 createCardButton.addEventListener('click', function (evt) {
   evt.preventDefault();
   openPopup(createCardPopup);
+  disableSubmitButton(createCardForm);
 });
 
 // Закрытие модальных окон
@@ -134,7 +135,6 @@ function createFormSubmitHandler(evt) {
   addCard(cardsContainer, cardElement);
 
   createCardForm.reset();
-
   closePopup(createCardPopup);
 }
 
@@ -229,6 +229,7 @@ function hideInputError(formElement, inputElement) {
 
 function hideInputErrors(formElement) {
   const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+
   inputList.forEach(function(inputElement) {
     hideInputError(formElement, inputElement);
   });
@@ -278,4 +279,9 @@ function toggleButtonState(inputList, buttonElement) {
   } else {
     buttonElement.classList.remove('popup__button_type_disabled');
   }
+}
+
+function disableSubmitButton(formElement) {
+  const buttonElement = formElement.querySelector('.popup__button');
+  buttonElement.classList.add('popup__button_type_disabled');
 }
