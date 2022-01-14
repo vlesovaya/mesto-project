@@ -42,16 +42,16 @@
               value="Закрыть окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form autocomplete="off" class="popup__form popup__form_type_edit"
-            name="edit-form">
-        <input class="popup__item popup__item_type_user-name" id="user-name"
-               maxlength="30" minlength="2" name="user-name" placeholder="Имя"
+            name="edit-form" novalidate>
+        <input class="popup__input" id="user-name"
+               maxlength="40" minlength="2" name="user-name" placeholder="Имя"
                required type="text"
                value="Жак-Ив Кусто">
-        <span class="popup__input-error name-input-error"></span>
-        <input class="popup__item popup__item_type_about-me" id="about-me"
-               maxlength="30" minlength="5" name="about-me" placeholder="О себе"
+        <span class="popup__input-error user-name-error"></span>
+        <input class="popup__input" id="about-me"
+               maxlength="200" minlength="2" name="about-me" placeholder="О себе"
                required type="text" value="Исследователь океана">
-        <span class="popup__input-error about-input-error"></span>
+        <span class="popup__input-error about-me-error"></span>
         <button class="popup__button popup__button_type_save" type="submit"
                 value="Сохранить">Сохранить
         </button>
@@ -65,17 +65,17 @@
               value="Закрыть окно"></button>
       <h2 class="popup__title">Новое место</h2>
       <form autocomplete="off" class="popup__form popup__form_type_create"
-            name="add-form">
-        <input class="popup__item popup__item_type_image-title" id="image-title"
-               maxlength="15" minlength="2" name="image-title"
+            name="add-form" novalidate>
+        <input class="popup__input" id="image-title"
+               maxlength="30" minlength="2" name="image-title"
                placeholder="Название"
                required type="text">
-        <span class="popup__input-error title-input-error"></span>
-        <input class="popup__item popup__item_type_image-link" id="image-link"
+        <span class="popup__input-error image-title-error"></span>
+        <input class="popup__input" id="image-link"
                name="image-link" placeholder="Ссылка на картинку"
                required type="url">
-        <span class="popup__input-error link-input-error"></span>
-        <button class="popup__button popup__button_type_create" type="submit" disabled
+        <span class="popup__input-error image-link-error"></span>
+        <button class="popup__button popup__button_type_create" type="submit"
                 value="Создать">Создать
         </button>
       </form>
