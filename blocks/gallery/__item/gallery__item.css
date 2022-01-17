@@ -1,6 +1,7 @@
 .gallery__item {
   position: relative;
   width: 282px;
+  height: 361px;
   font-size: 0;
   margin: 0;
 }

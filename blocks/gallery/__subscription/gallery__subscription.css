@@ -1,7 +1,6 @@
 .gallery__subscription {
   display: flex;
   justify-content: space-between;
-  /*max-width: 282px;*/
   margin: 0;
   padding: 25px 21px;
   background-color: #ffffff;
