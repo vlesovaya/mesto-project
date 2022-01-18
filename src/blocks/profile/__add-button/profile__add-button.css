@@ -12,7 +12,7 @@
 }
 
 .profile__add-button:before {
-  content: url("../../../images/add-button-plus.svg");
+  content: url("../../../vendor/images/add-button-plus.svg");
 }
 
 .profile__add-button:hover {
@@ -32,6 +32,6 @@
   }
 
   .profile__add-button:before {
-    content: url("../../../images/add-button-plus-mobile.svg");
+    content: url("../../../vendor/images/add-button-plus-mobile.svg");
   }
 }

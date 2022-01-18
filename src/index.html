@@ -11,14 +11,14 @@
 
   <header class="header page__header">
     <img alt="Логотип проекта Место" class="header__logo"
-         src="./images/header-logo.svg">
+         src="vendor/images/header-logo.svg">
   </header>
 
   <main class="main page__main">
     <section class="profile">
       <div class="profile__info">
         <img alt="Фото пользователя" class="profile__image"
-             src="./images/user-photo.jpg">
+             src="vendor/images/user-photo.jpg">
         <div class="profile__description">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <p class="profile__subtitle">Исследователь океана</p>
@@ -102,6 +102,10 @@
     <button class="gallery__trash-button" type="button"></button>
   </li>
 </template>
-<script src="page/index.js"></script>
+<script src="index.js" type="module"></script>
+<script src="./components/card.js" type="module"></script>
+<script src="./components/validate.js" type="module"></script>
+<script src="./components/modal.js" type="module"></script>
+<script src="./components/data.js" type="module"></script>
 </body>
 </html>

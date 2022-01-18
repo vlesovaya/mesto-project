@@ -1,0 +1,7 @@
+.gallery__like_active {
+  background-image: url("../../../../vendor/images/heart-button-active.svg");
+}
+
+.gallery__like_active:hover {
+  opacity: 1;
+}
