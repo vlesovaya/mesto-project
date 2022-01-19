@@ -1,3 +1,4 @@
+import './page/index.css';
 import {validationConfig, initialCards} from "./components/data.js";
 import {enableValidation} from "./components/validate.js";
 import {
