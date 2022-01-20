@@ -32,6 +32,7 @@ export function onCloseCreatePopup() {
 
 export function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
+  document.addEventListener('keydown', closeOnEscapeClick);
 }
 
 export function openEditPopup(evt) {
@@ -49,17 +50,18 @@ export function openCreateCardPopup(evt) {
 
 export function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeOnEscapeClick);
 }
 
 export function closeEditPopup(evt) {
   evt.preventDefault();
-  closePopup(editPopup);
+  closePopup();
   onCloseEditPopup();
 }
 
 export function closeCreateCardPopup(evt) {
   evt.preventDefault();
-  closePopup(createCardPopup);
+  closePopup();
   onCloseCreatePopup();
 }
 
@@ -68,7 +70,7 @@ export function closeImagePopup(evt) {
   closePopup(imagePopup);
 }
 
-export function closeOnEscapeClick(evt) {
+function closeOnEscapeClick(evt) {
   if (evt.key === 'Escape') {
     const popup = document.querySelector('.popup_opened');
     if (popup !== null) {
