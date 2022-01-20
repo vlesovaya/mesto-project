@@ -5,7 +5,6 @@ import {
   closeCreateCardPopup,
   closeEditPopup,
   closeImagePopup,
-  closeOnEscapeClick,
   closeOnOverlayClick,
   editCloseButton,
   editForm,
