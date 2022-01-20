@@ -36,8 +36,6 @@ editCloseButton.addEventListener('click', closeEditPopup);
 createCardCloseButton.addEventListener('click', closeCreateCardPopup);
 imageCloseButton.addEventListener('click', closeImagePopup);
 
-document.addEventListener('keydown', closeOnEscapeClick);
-
 for (let popup of popups) {
   popup.addEventListener('click', closeOnOverlayClick);
 }
