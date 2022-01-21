@@ -6,27 +6,11 @@ export const popups = document.querySelectorAll('.popup');
 export const profileEditButton = document.querySelector('.profile__edit-button');
 export const editPopup = document.querySelector('.popup_type_edit');
 export const editForm = document.forms['edit-form'];
-export const editCloseButton = editPopup.querySelector('.popup__close_edit-button');
 export const imagePopup = document.querySelector('.popup_type_image');
-export const imageCloseButton = document.querySelector('.popup__close_type_image');
-
-// Обработка закрытия модальных окон
-
-function onCloseEditPopup() {
-  const profileTitle = document.querySelector('.profile__title');
-  const profileSubtitle = document.querySelector('.profile__subtitle');
-  const name = editForm.elements['user-name'];
-  const info = editForm.elements['about-me'];
-
-  name.value = profileTitle.textContent;
-  info.value = profileSubtitle.textContent;
-  hideInputErrors(editForm, validationConfig);
-}
-
-export function onCloseCreatePopup() {
-  createCardForm.reset();
-  hideInputErrors(createCardForm, validationConfig);
-}
+const profileTitle = document.querySelector('.profile__title');
+const profileSubtitle = document.querySelector('.profile__subtitle');
+const popupImage = imagePopup.querySelector('.image-popup__image');
+const popupImageTitle = imagePopup.querySelector('.image-popup__image-title');
 
 // Открытие модальных окон
 
@@ -35,58 +19,61 @@ export function openPopup(popupElement) {
   document.addEventListener('keydown', closeOnEscapeClick);
 }
 
-export function openEditPopup(evt) {
+function openPopupWithForm(popup, form, evt) {
   evt.preventDefault();
-  openPopup(editPopup);
+  openPopup(popup);
+  hideInputErrors(form, validationConfig);
+  form.reset();
+  const buttonElement = form.querySelector(validationConfig.submitButtonSelector);
+  disableSubmitButton(buttonElement);
+}
+
+export function openEditPopup(evt) {
+  openPopupWithForm(editPopup, editForm, evt);
+
+  const name = editForm.elements['user-name'];
+  const info = editForm.elements['about-me'];
+
+  name.value = profileTitle.textContent;
+  info.value = profileSubtitle.textContent;
 }
 
 export function openCreateCardPopup(evt) {
-  evt.preventDefault();
-  openPopup(createCardPopup);
-  disableSubmitButton(createCardForm);
+  openPopupWithForm(createCardPopup, createCardForm, evt);
 }
 
 // Закрытие модальных окон
 
-export function closePopup(popupElement) {
-  popupElement.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeOnEscapeClick);
-}
-
-export function closeEditPopup(evt) {
-  evt.preventDefault();
-  closePopup();
-  onCloseEditPopup();
-}
-
-export function closeCreateCardPopup(evt) {
-  evt.preventDefault();
-  closePopup();
-  onCloseCreatePopup();
-}
-
-export function closeImagePopup(evt) {
-  evt.preventDefault();
-  closePopup(imagePopup);
+export function addClosePopupOnClick() {
+  for (let popup of popups) {
+    popup.addEventListener('mousedown', function (evt) {
+      if (evt.target.classList.contains('popup_opened')) {
+        evt.preventDefault();
+        closePopup();
+      }
+      if (evt.target.classList.contains('popup__close')) {
+        evt.preventDefault();
+        closePopup();
+      }
+    });
+  }
 }
 
 function closeOnEscapeClick(evt) {
   if (evt.key === 'Escape') {
     const popup = document.querySelector('.popup_opened');
     if (popup !== null) {
-      closePopup(popup);
-      onCloseEditPopup();
-      onCloseCreatePopup();
+      closePopup();
     }
   }
 }
 
-export function closeOnOverlayClick(evt) {
-  const popup = document.querySelector('.popup_opened');
-  if (evt.target.classList.contains('popup_opened')) {
-    closePopup(popup);
-    onCloseEditPopup();
-    onCloseCreatePopup();
+export function closePopup() {
+  for (let popup of popups) {
+    if (popup.classList.contains('popup_opened')) {
+      popup.classList.remove('popup_opened');
+    }
+    document.removeEventListener('keydown', closeOnEscapeClick);
   }
 }
 
@@ -95,24 +82,19 @@ export function closeOnOverlayClick(evt) {
 export function editFormSubmitHandler(evt) {
   evt.preventDefault();
 
-  const profileTitle = document.querySelector('.profile__title');
-  const profileSubtitle = document.querySelector('.profile__subtitle');
   const name = editForm.elements['user-name'];
   const info = editForm.elements['about-me'];
 
   profileTitle.textContent = name.value;
   profileSubtitle.textContent = info.value;
 
-  closePopup(editPopup);
+  closePopup();
 }
 
 // Открытие модального окна с фото
 
 export function showImagePopup(name, link) {
   openPopup(imagePopup);
-
-  const popupImage = imagePopup.querySelector('.image-popup__image');
-  const popupImageTitle = imagePopup.querySelector('.image-popup__image-title');
 
   popupImage.src = link;
   popupImage.alt = name;

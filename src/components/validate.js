@@ -36,8 +36,8 @@ function hasInvalidInput(inputList) {
   });
 }
 
-export function disableSubmitButton(buttonElement, inactiveButtonClass) {
-  buttonElement.classList.add(inactiveButtonClass);
+export function disableSubmitButton(buttonElement) {
+  buttonElement.setAttribute("disabled", "disabled");
   buttonElement.disabled = true;
 }
 
@@ -46,13 +46,13 @@ function enableSubmitButton(buttonElement, inactiveButtonClass) {
   buttonElement.disabled = false;
 }
 
-function toggleButtonState(formElement, inputList, submitButtonSelector, inactiveButtonClass) {
+function toggleButtonState(formElement, inputList, submitButtonSelector) {
   const buttonElement = formElement.querySelector(submitButtonSelector);
 
   if (hasInvalidInput(inputList)) {
-    disableSubmitButton(buttonElement, inactiveButtonClass);
+    disableSubmitButton(buttonElement);
   } else {
-    enableSubmitButton(buttonElement, inactiveButtonClass);
+    enableSubmitButton(buttonElement);
   }
 }
 
