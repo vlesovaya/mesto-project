@@ -3,7 +3,6 @@ import {closePopup, showImagePopup} from "./modal.js";
 const cardsContainer = document.querySelector('.gallery__items');
 export const createCardForm = document.forms['add-form'];
 export const createCardPopup = document.querySelector('.popup_type_add');
-export const createCardCloseButton = createCardPopup.querySelector('.popup__close_add-button');
 export const createCardButton = document.querySelector('.profile__add-button');
 
 // Coздание карточки
