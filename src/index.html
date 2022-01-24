@@ -18,6 +18,7 @@
       <div class="profile__info">
         <img alt="Фото пользователя" class="profile__image"
              src="<%=require('./vendor/images/user-photo.jpg')%>">
+        <div class="profile__overlay"></div>
         <div class="profile__description">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <p class="profile__subtitle">Исследователь океана</p>
@@ -90,13 +91,46 @@
     </div>
   </section>
 
+  <section class="popup popup_type_user-photo">
+    <div class="popup__content">
+      <button class="popup__close popup__close_user-photo-button" type="button"
+              value="Закрыть окно"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form autocomplete="off" class="popup__form popup__form_type_user-photo"
+            name="user-photo-form" novalidate>
+        <input class="popup__input" id="user-photo"
+               name="user-photo" placeholder="Ссылка на фото"
+               required type="url">
+        <span class="popup__input-error user-photo-error"></span>
+        <button class="popup__button popup__button_type_user-photo" type="submit"
+                value="Сохранить">Создать
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <section class="popup popup_type_delete-card">
+    <div class="popup__content">
+      <button class="popup__close popup__close_user-photo-button" type="button"
+              value="Закрыть окно"></button>
+      <h2 class="popup__title">Вы уверены?</h2>
+        <button class="popup__button popup__button_type_user-photo" type="submit"
+                value="Сохранить">Да
+        </button>
+      </form>
+    </div>
+  </section>
+
 </div>
 <template id="gallery-template">
   <li class="gallery__item">
     <img class="gallery__photo">
     <div class="gallery__subscription">
       <h2 class="gallery__title"></h2>
-      <button class="gallery__like" type="button"></button>
+      <div class="gallery__like-container">
+        <button class="gallery__like" type="button"></button>
+        <span class="gallery_like-counter"></span>
+      </div>
     </div>
     <button class="gallery__trash-button" type="button"></button>
   </li>

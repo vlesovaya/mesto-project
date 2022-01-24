@@ -1,6 +1,7 @@
 .gallery__like {
   width: 22px;
   height: 19px;
+  margin-bottom: 3px;
   background-image: url("../../../vendor/images/heart-button.svg");
   background-repeat: no-repeat;
   top: 0;

@@ -2,9 +2,11 @@
   display: flex;
   justify-content: space-between;
   margin: 0;
-  padding: 25px 21px;
+  /*padding: 25px 21px;*/
   background-color: #ffffff;
   grid-area: gallery__subscription;
   border-radius: 0 0 10px 10px;
   align-items: center;
+  min-height: 79px;
+  padding: 0 21px;
 }

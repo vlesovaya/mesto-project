@@ -1,0 +1,17 @@
+.profile__overlay {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 100px;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-image: url("../../../vendor/images/edit-photo-button.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.profile__overlay:hover {
+  opacity: 1;
+  cursor: pointer;
+}
