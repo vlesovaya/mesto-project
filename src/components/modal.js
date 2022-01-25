@@ -1,6 +1,7 @@
 import {createCardForm, createCardPopup,} from "./card.js";
 import {disableSubmitButton, hideInputErrors} from "./validate.js";
 import {validationConfig} from "./data.js";
+import {userPhotoPopup, userPhotoForm} from "./profile.js";
 
 export const popups = document.querySelectorAll('.popup');
 export const profileEditButton = document.querySelector('.profile__edit-button');
@@ -8,8 +9,6 @@ export const editPopup = document.querySelector('.popup_type_edit');
 export const editForm = document.forms['edit-form'];
 export const imagePopup = document.querySelector('.popup_type_image');
 export const editPhotoButton = document.querySelector('.profile__edit-image');
-const userPhotoPopup = document.querySelector('.popup_type_user-photo');
-const userPhotoForm = document.forms['user-photo-form'];
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const popupImage = imagePopup.querySelector('.image-popup__image');
@@ -45,7 +44,7 @@ export function openCreateCardPopup(evt) {
   openPopupWithForm(createCardPopup, createCardForm, evt);
 }
 
-export function openUserPhotoPopup(evt) {
+export function openEditUserPhotoPopup(evt) {
   openPopupWithForm(userPhotoPopup, userPhotoForm, evt);
 }
 

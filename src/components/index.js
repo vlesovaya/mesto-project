@@ -6,11 +6,12 @@ import {
   editForm,
   editFormSubmitHandler,
   openCreateCardPopup,
-  openEditPopup, openUserPhotoPopup,
+  openEditPopup, openEditUserPhotoPopup,
   profileEditButton,
   editPhotoButton
 } from "./modal.js";
 import {addInitialCards, createCardButton, createCardForm, createFormSubmitHandler} from "./card.js";
+import {userPhotoForm, editPhotoSubmitHandler} from "./profile.js";
 
 // Открытие модальных окон
 
@@ -18,7 +19,7 @@ profileEditButton.addEventListener('click', openEditPopup);
 
 createCardButton.addEventListener('click', openCreateCardPopup);
 
-editPhotoButton.addEventListener('click', openUserPhotoPopup);
+editPhotoButton.addEventListener('click', openEditUserPhotoPopup);
 
 // Закрытие модальных окон
 
@@ -31,6 +32,10 @@ editForm.addEventListener('submit', editFormSubmitHandler);
 // Coздание карточки
 
 createCardForm.addEventListener('submit', createFormSubmitHandler);
+
+// Изменение фотографии пользователя
+
+userPhotoForm.addEventListener('submit', editPhotoSubmitHandler);
 
 // Добавление карточек из массива
 
