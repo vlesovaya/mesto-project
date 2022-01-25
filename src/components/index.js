@@ -6,8 +6,9 @@ import {
   editForm,
   editFormSubmitHandler,
   openCreateCardPopup,
-  openEditPopup,
+  openEditPopup, openUserPhotoPopup,
   profileEditButton,
+  editPhotoButton
 } from "./modal.js";
 import {addInitialCards, createCardButton, createCardForm, createFormSubmitHandler} from "./card.js";
 
@@ -16,6 +17,8 @@ import {addInitialCards, createCardButton, createCardForm, createFormSubmitHandl
 profileEditButton.addEventListener('click', openEditPopup);
 
 createCardButton.addEventListener('click', openCreateCardPopup);
+
+editPhotoButton.addEventListener('click', openUserPhotoPopup);
 
 // Закрытие модальных окон
 

@@ -1,4 +1,4 @@
-.profile__overlay {
+.profile__edit-image {
   position: absolute;
   width: 120px;
   height: 120px;
@@ -11,7 +11,7 @@
   transition: opacity 1s ease-in;
 }
 
-.profile__overlay:hover {
+.profile__edit-image:hover {
   opacity: 1;
   cursor: pointer;
 }
