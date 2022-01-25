@@ -1,9 +1,10 @@
-import {closePopup, showImagePopup} from "./modal.js";
+import {closePopup, openPopup, showImagePopup} from "./modal.js";
 
 const cardsContainer = document.querySelector('.gallery__items');
 export const createCardForm = document.forms['add-form'];
 export const createCardPopup = document.querySelector('.popup_type_add');
 export const createCardButton = document.querySelector('.profile__add-button');
+const removeConfirmButton = document.querySelector('.remove-button');
 
 // Coздание карточки
 
@@ -30,6 +31,7 @@ function createCard(name, link) {
   const cardTitle = cardElement.querySelector('.gallery__title');
   const likeButton = cardElement.querySelector('.gallery__like');
   const removeButton = cardElement.querySelector('.gallery__trash-button');
+  const removeCardPopup = document.querySelector('.popup_type_delete-card');
 
   cardImage.src = link;
   cardImage.alt = name;
@@ -40,9 +42,13 @@ function createCard(name, link) {
     evt.target.classList.toggle('gallery__like_active');
   });
 
-  removeButton.addEventListener('click', function () {
-    const card = removeButton.closest('.gallery__item')
-    card.remove();
+  removeButton.addEventListener('click', function (evt) {
+    evt.preventDefault();
+    openPopup(removeCardPopup);
+    removeConfirmButton.addEventListener('click', function (removeConfirmButtonEvt) {
+      removeConfirmButtonEvt.preventDefault();
+      removeConfirmButtonEventHandler(evt);
+    });
   });
 
   cardImage.addEventListener('click', function (evt) {
@@ -55,6 +61,18 @@ function createCard(name, link) {
 
 function addCard(container, cardElement) {
   container.prepend(cardElement);
+}
+
+// Удаление карточки
+
+function removeConfirmButtonEventHandler(evt) {
+  const removeButton = evt.target;
+  const card = removeButton.closest('.gallery__item')
+  card.remove();
+
+  closePopup();
+
+  removeConfirmButton.removeEventListener('click', removeConfirmButtonEventHandler);
 }
 
 // Добавление карточек из массива
