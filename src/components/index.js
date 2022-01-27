@@ -1,5 +1,5 @@
 import '../page/index.css';
-import {initialCards, validationConfig} from "./data.js";
+import {user, validationConfig} from "./data.js";
 import {enableValidation} from "./validate.js";
 import {
   addClosePopupOnClick,
@@ -42,8 +42,6 @@ userPhotoForm.addEventListener('submit', editPhotoSubmitHandler);
 
 // Добавление карточек из массива
 
-addInitialCards();
-
 // Валидация
 
 enableValidation(validationConfig);
@@ -54,6 +52,13 @@ getUserInfo()
     console.log(res);
     editProfileElements(res.name, res.about);
     editProfilePhotoElement(res.avatar);
+
+    user._id = res._id;
+    user.name = res.name;
+    user.about = res.about;
+    user.avatar = res.avatar;
+
+    addInitialCards();
   })
   .catch((err) => {
     console.log('Ошибка. Запрос не выполнен');
