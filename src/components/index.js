@@ -11,7 +11,10 @@ import {
   editPhotoButton
 } from "./modal.js";
 import {addInitialCards, createCardButton, createCardForm, createFormSubmitHandler} from "./card.js";
-import {userPhotoForm, editPhotoSubmitHandler} from "./profile.js";
+import {userPhotoForm, editPhotoSubmitHandler, editProfileElements, editProfilePhotoElement} from "./profile.js";
+
+import {getUserInfo, getCards, editProfile} from "./api.js";
+
 
 // Открытие модальных окон
 
@@ -39,8 +42,19 @@ userPhotoForm.addEventListener('submit', editPhotoSubmitHandler);
 
 // Добавление карточек из массива
 
-addInitialCards(initialCards);
+addInitialCards();
 
 // Валидация
 
 enableValidation(validationConfig);
+
+
+getUserInfo()
+  .then((res) => {
+    console.log(res);
+    editProfileElements(res.name, res.about);
+    editProfilePhotoElement(res.avatar);
+  })
+  .catch((err) => {
+    console.log('Ошибка. Запрос не выполнен');
+  });

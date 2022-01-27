@@ -1,7 +1,8 @@
 import {createCardForm, createCardPopup,} from "./card.js";
 import {disableSubmitButton, hideInputErrors} from "./validate.js";
 import {validationConfig} from "./data.js";
-import {userPhotoPopup, userPhotoForm} from "./profile.js";
+import {userPhotoForm, userPhotoPopup, editProfileElements} from "./profile.js";
+import {editProfile} from "./api";
 
 export const popups = document.querySelectorAll('.popup');
 export const profileEditButton = document.querySelector('.profile__edit-button');
@@ -88,11 +89,18 @@ export function closePopup() {
 export function editFormSubmitHandler(evt) {
   evt.preventDefault();
 
-  const name = editForm.elements['user-name'];
-  const info = editForm.elements['about-me'];
+  const nameInput = editForm.elements['user-name'];
+  const infoInput = editForm.elements['about-me'];
 
-  profileTitle.textContent = name.value;
-  profileSubtitle.textContent = info.value;
+  editProfileElements(nameInput.value, infoInput.value);
+
+  editProfile(nameInput.value, infoInput.value)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log('Ошибка. Запрос не выполнен');
+    });
 
   closePopup();
 }

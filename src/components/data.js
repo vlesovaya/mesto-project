@@ -7,7 +7,7 @@ export const validationConfig = {
   errorClass: 'popup__input-error_active'
 }
 
-export const initialCards = [
+export let initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
