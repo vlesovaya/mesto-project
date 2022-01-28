@@ -22,13 +22,12 @@ export function createFormSubmitHandler(evt) {
   disableSubmitButtonInForm(createCardForm);
 
   addNewCard(titleInput.value, linkInput.value)
-    .then((res) => {
-      console.log(res);
+    .then(function (res) {
       addCard(res);
       closePopup();
     })
-    .catch((err) => {
-      console.log('Ошибка. Запрос не выполнен');
+    .catch(function (err) {
+      console.log(`Ошибка. Запрос не выполнен. ${err}`);
       closePopup();
     });
 
@@ -60,14 +59,12 @@ function createCard(name, link, likesCount, isLiked, showDeleteButton, cardId) {
     evt.target.classList.toggle('gallery__like_active');
     const isLiked = evt.target.classList.contains('gallery__like_active');
     toggleLikeOnCard(isLiked, cardId)
-      .then((res) => {
-        console.log('Это лайк');
-        console.log(res);
+      .then(function (res) {
         const itemLikesCount = res.likes.length != null ? res.likes.length : 0;
         likeCounter.textContent = `${itemLikesCount}`;
       })
-      .catch((err) => {
-        console.log('Ошибка. Запрос не выполнен');
+      .catch(function (err) {
+        console.log(`Ошибка. Запрос не выполнен. ${err}`);
       });
   });
 
@@ -107,20 +104,15 @@ function removeConfirmButtonEventHandler(evt, cardId) {
   disableSubmitButtonInForm(deleteCardPopup);
 
   deleteCard(cardId)
-    .then((res) => {
-      console.log(res);
-
+    .then(function (res) {
       const card = removeButton.closest('.gallery__item')
       card.remove();
-
       closePopup();
     })
-    .catch((err) => {
-      console.log('Ошибка. Запрос не выполнен');
+    .catch(function (err) {
+      console.log(`Ошибка. Запрос не выполнен. ${err}`);
       closePopup();
     });
-
-
 
   removeConfirmButton.removeEventListener('click', removeConfirmButtonEventHandler);
 }
@@ -143,15 +135,14 @@ function addCard(item) {
   addCardOnPage(cardsContainer, cardElement);
 }
 
-export function addInitialCards() {
+export function getUserFeed() {
   getCards()
-    .then((res) => {
-      console.log(res);
+    .then(function (res) {
       res.reverse().forEach(function (item) {
         addCard(item);
       });
     })
-    .catch((err) => {
-      console.log('Ошибка. Запрос не выполнен');
+    .catch(function (err) {
+      console.log(`Ошибка. Запрос не выполнен. ${err}`);
     });
 }

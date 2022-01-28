@@ -1,5 +1,8 @@
 import {closePopup} from "./modal.js";
-import {editProfilePhoto} from "./api";
+import {editProfilePhoto, getUserInfo} from "./api.js";
+import {user} from "./data.js";
+import {getUserFeed} from "./card.js";
+import {disableSubmitButtonInForm, editSubmitButtonText} from "./utils.js";
 
 export const userPhotoPopup = document.querySelector('.popup_type_user-photo');
 export const userPhotoForm = document.forms['user-photo-form'];
@@ -14,18 +17,19 @@ export function editPhotoSubmitHandler(evt) {
   evt.preventDefault();
 
   const linkInput = userPhotoForm.elements['photo-link'];
-  editProfilePhotoElement(linkInput.value)
-  // userPhoto.src = link.value;
+
+  disableSubmitButtonInForm(userPhotoForm);
+  editSubmitButtonText(userPhotoForm, "Загрузка...")
 
   editProfilePhoto(linkInput.value)
-    .then((res) => {
-      console.log(res);
+    .then(function (res) {
+      editProfilePhotoElement(linkInput.value)
+      closePopup();
     })
-    .catch((err) => {
-      console.log('Ошибка. Запрос не выполнен');
+    .catch(function (err) {
+      console.log(`Ошибка. Запрос не выполнен. ${err}`);
+      closePopup();
     });
-
-  closePopup();
 }
 
 export function editProfilePhotoElement(link) {
@@ -35,4 +39,22 @@ export function editProfilePhotoElement(link) {
 export function editProfileElements(name, info) {
   profileTitle.textContent = name;
   profileSubtitle.textContent = info;
+}
+
+export function getProfile() {
+  getUserInfo()
+    .then(function (res) {
+      editProfileElements(res.name, res.about);
+      editProfilePhotoElement(res.avatar);
+
+      user._id = res._id;
+      user.name = res.name;
+      user.about = res.about;
+      user.avatar = res.avatar;
+
+      getUserFeed();
+    })
+    .catch(function (err) {
+      console.log(`Ошибка. Запрос не выполнен. ${err}`);
+    });
 }

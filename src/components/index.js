@@ -1,19 +1,18 @@
 import '../page/index.css';
-import {user, validationConfig} from "./data.js";
+import {validationConfig} from "./data.js";
 import {enableValidation} from "./validate.js";
 import {
   addClosePopupOnClick,
   editForm,
   editFormSubmitHandler,
+  editPhotoButton,
   openCreateCardPopup,
-  openEditPopup, openEditUserPhotoPopup,
-  profileEditButton,
-  editPhotoButton
+  openEditPopup,
+  openEditUserPhotoPopup,
+  profileEditButton
 } from "./modal.js";
-import {addInitialCards, createCardButton, createCardForm, createFormSubmitHandler} from "./card.js";
-import {userPhotoForm, editPhotoSubmitHandler, editProfileElements, editProfilePhotoElement} from "./profile.js";
-
-import {getUserInfo} from "./api.js";
+import {createCardButton, createCardForm, createFormSubmitHandler} from "./card.js";
+import {editPhotoSubmitHandler, getProfile, userPhotoForm} from "./profile.js";
 
 
 // Открытие модальных окон
@@ -40,26 +39,10 @@ createCardForm.addEventListener('submit', createFormSubmitHandler);
 
 userPhotoForm.addEventListener('submit', editPhotoSubmitHandler);
 
-// Добавление карточек из массива
-
 // Валидация
 
 enableValidation(validationConfig);
 
+// Загрузка профиля
 
-getUserInfo()
-  .then((res) => {
-    console.log(res);
-    editProfileElements(res.name, res.about);
-    editProfilePhotoElement(res.avatar);
-
-    user._id = res._id;
-    user.name = res.name;
-    user.about = res.about;
-    user.avatar = res.avatar;
-
-    addInitialCards();
-  })
-  .catch((err) => {
-    console.log('Ошибка. Запрос не выполнен');
-  });
+getProfile();

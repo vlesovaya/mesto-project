@@ -47,11 +47,11 @@ function toggleLikeOnCard(isLiked, id) {
 }
 
 function sendRequest(urlSuffix, method, body) {
-  return  fetch(`${config.baseUrl}${urlSuffix}`,{
+  return fetch(`${config.baseUrl}${urlSuffix}`, {
     method: method,
     headers: config.headers,
     body: body
-  }).then(res => {
+  }).then(function (res) {
     if (res.ok) {
       return res.json();
     }
