@@ -1,4 +1,4 @@
-export {getUserInfo, getCards, editProfile, editProfilePhoto, addNewCard};
+export {getUserInfo, getCards, editProfile, editProfilePhoto, addNewCard, deleteCard, toggleLikeOnCard};
 
 const config = {
   baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-6',
@@ -34,6 +34,16 @@ function addNewCard(name, link) {
     name: name,
     link: link
   }));
+}
+
+function deleteCard(id) {
+  return sendRequest(`/cards/${id}`, 'DELETE', JSON.stringify({
+    _id: id
+  }));
+}
+
+function toggleLikeOnCard(isLiked, id) {
+  return sendRequest(`/cards/likes/${id}`, isLiked ? 'PUT' : 'DELETE', null);
 }
 
 function sendRequest(urlSuffix, method, body) {

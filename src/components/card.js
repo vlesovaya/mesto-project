@@ -1,5 +1,5 @@
 import {closePopup, openPopup, showImagePopup} from "./modal.js";
-import {addNewCard, getCards} from "./api.js";
+import {addNewCard, deleteCard, getCards, toggleLikeOnCard} from "./api.js";
 import {user} from "./data.js";
 
 const cardsContainer = document.querySelector('.gallery__items');
@@ -16,12 +16,10 @@ export function createFormSubmitHandler(evt) {
   const titleInput = createCardForm.elements['image-title'];
   const linkInput = createCardForm.elements['image-link'];
 
-  const cardElement = createCard(titleInput.value, linkInput.value, 0);
-  addCardOnPage(cardsContainer, cardElement);
-
   addNewCard(titleInput.value, linkInput.value)
     .then((res) => {
       console.log(res);
+      addCard(res);
     })
     .catch((err) => {
       console.log('Ошибка. Запрос не выполнен');
@@ -33,7 +31,7 @@ export function createFormSubmitHandler(evt) {
 
 // Добавление карточки
 
-function createCard(name, link, likesCount, isLiked, showDeleteButton) {
+function createCard(name, link, likesCount, isLiked, showDeleteButton, cardId) {
   const cardTemplate = document.querySelector('#gallery-template').content;
   const cardElement = cardTemplate.querySelector('.gallery__item').cloneNode(true);
 
@@ -50,10 +48,22 @@ function createCard(name, link, likesCount, isLiked, showDeleteButton) {
   cardTitle.textContent = name;
 
   if (isLiked) {
-    likeButton.classList.add('gallery__like_active')
+    likeButton.classList.add('gallery__like_active');
   }
+
   likeButton.addEventListener('click', function (evt) {
     evt.target.classList.toggle('gallery__like_active');
+    const isLiked = evt.target.classList.contains('gallery__like_active');
+    toggleLikeOnCard(isLiked, cardId)
+      .then((res) => {
+        console.log('Это лайк');
+        console.log(res);
+        const itemLikesCount = res.likes.length != null ? res.likes.length : 0;
+        likeCounter.textContent = `${itemLikesCount}`;
+      })
+      .catch((err) => {
+        console.log('Ошибка. Запрос не выполнен');
+      });
   });
 
   if (showDeleteButton) {
@@ -62,7 +72,7 @@ function createCard(name, link, likesCount, isLiked, showDeleteButton) {
       openPopup(removeCardPopup);
       removeConfirmButton.addEventListener('click', function (removeConfirmButtonEvt) {
         removeConfirmButtonEvt.preventDefault();
-        removeConfirmButtonEventHandler(evt);
+        removeConfirmButtonEventHandler(evt, cardId);
       });
     });
   } else {
@@ -83,10 +93,18 @@ function addCardOnPage(container, cardElement) {
 
 // Удаление карточки
 
-function removeConfirmButtonEventHandler(evt) {
+function removeConfirmButtonEventHandler(evt, cardId) {
   const removeButton = evt.target;
   const card = removeButton.closest('.gallery__item')
   card.remove();
+
+  deleteCard(cardId)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log('Ошибка. Запрос не выполнен');
+    });
 
   closePopup();
 
@@ -104,9 +122,9 @@ function addCard(item) {
 
   const isLiked = usersWhoLiked.includes(user._id);
 
-  const showDeleteButton = (item.owner._id === user._id)
+  const showDeleteButton = (item.owner._id === user._id);
 
-  const cardElement = createCard(item.name, item.link, itemLikesCount, isLiked, showDeleteButton);
+  const cardElement = createCard(item.name, item.link, itemLikesCount, isLiked, showDeleteButton, item._id);
 
   addCardOnPage(cardsContainer, cardElement);
 }

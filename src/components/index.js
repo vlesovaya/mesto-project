@@ -13,7 +13,7 @@ import {
 import {addInitialCards, createCardButton, createCardForm, createFormSubmitHandler} from "./card.js";
 import {userPhotoForm, editPhotoSubmitHandler, editProfileElements, editProfilePhotoElement} from "./profile.js";
 
-import {getUserInfo, getCards, editProfile} from "./api.js";
+import {getUserInfo} from "./api.js";
 
 
 // Открытие модальных окон
