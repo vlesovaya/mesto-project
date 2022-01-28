@@ -9,7 +9,9 @@
 
 ![](src/vendor/images/preview.jpg)
 
+___
 [Посмотреть проект Mesto](https://vlesovaya.github.io/mesto-project/)
+___
 
 ### Используемые технологии:
 
