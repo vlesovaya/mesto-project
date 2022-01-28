@@ -1,7 +1,9 @@
 .gallery_like-counter {
+  margin: 0;
   font-size: 13px;
   line-height: 16px;
   text-align: center;
   width: 22px;
   height: 13px;
+  color: black;
 }
