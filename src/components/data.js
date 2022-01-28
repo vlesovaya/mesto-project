@@ -1,5 +1,3 @@
-import {editProfilePhotoElement} from "./profile";
-
 export const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',

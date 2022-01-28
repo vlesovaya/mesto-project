@@ -41,7 +41,7 @@ export function disableSubmitButton(buttonElement) {
   buttonElement.disabled = true;
 }
 
-function enableSubmitButton(buttonElement, inactiveButtonClass) {
+export function enableSubmitButton(buttonElement, inactiveButtonClass) {
   buttonElement.classList.remove(inactiveButtonClass);
   buttonElement.disabled = false;
 }

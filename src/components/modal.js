@@ -1,8 +1,9 @@
 import {createCardForm, createCardPopup,} from "./card.js";
-import {disableSubmitButton, hideInputErrors} from "./validate.js";
+import {hideInputErrors} from "./validate.js";
 import {validationConfig} from "./data.js";
 import {userPhotoForm, userPhotoPopup, editProfileElements} from "./profile.js";
 import {editProfile} from "./api";
+import {disableSubmitButtonInForm, editSubmitButtonText} from "./utils.js";
 
 export const popups = document.querySelectorAll('.popup');
 export const profileEditButton = document.querySelector('.profile__edit-button');
@@ -27,11 +28,11 @@ function openPopupWithForm(popup, form, evt) {
   openPopup(popup);
   hideInputErrors(form, validationConfig);
   form.reset();
-  const buttonElement = form.querySelector(validationConfig.submitButtonSelector);
-  disableSubmitButton(buttonElement);
+  disableSubmitButtonInForm(form);
 }
 
 export function openEditPopup(evt) {
+  editSubmitButtonText(editForm, 'Сохранить');
   openPopupWithForm(editPopup, editForm, evt);
 
   const name = editForm.elements['user-name'];
@@ -42,6 +43,7 @@ export function openEditPopup(evt) {
 }
 
 export function openCreateCardPopup(evt) {
+  editSubmitButtonText(createCardForm, 'Создать');
   openPopupWithForm(createCardPopup, createCardForm, evt);
 }
 
@@ -92,17 +94,19 @@ export function editFormSubmitHandler(evt) {
   const nameInput = editForm.elements['user-name'];
   const infoInput = editForm.elements['about-me'];
 
-  editProfileElements(nameInput.value, infoInput.value);
+  editSubmitButtonText(editForm, 'Сохранение...');
+  disableSubmitButtonInForm(editForm);
 
   editProfile(nameInput.value, infoInput.value)
     .then((res) => {
       console.log(res);
+      editProfileElements(nameInput.value, infoInput.value);
+      closePopup();
     })
     .catch((err) => {
       console.log('Ошибка. Запрос не выполнен');
+      closePopup();
     });
-
-  closePopup();
 }
 
 // Открытие модального окна с фото

@@ -1,9 +1,11 @@
 import {closePopup, openPopup, showImagePopup} from "./modal.js";
 import {addNewCard, deleteCard, getCards, toggleLikeOnCard} from "./api.js";
 import {user} from "./data.js";
+import {disableSubmitButtonInForm, editSubmitButtonText, enableSubmitButtonInForm} from "./utils.js";
 
 const cardsContainer = document.querySelector('.gallery__items');
 export const createCardForm = document.forms['add-form'];
+export const deleteCardPopup = document.querySelector('.popup_type_delete-card');
 export const createCardPopup = document.querySelector('.popup_type_add');
 export const createCardButton = document.querySelector('.profile__add-button');
 const removeConfirmButton = document.querySelector('.remove-button');
@@ -16,17 +18,21 @@ export function createFormSubmitHandler(evt) {
   const titleInput = createCardForm.elements['image-title'];
   const linkInput = createCardForm.elements['image-link'];
 
+  editSubmitButtonText(createCardForm, 'Загрузка...');
+  disableSubmitButtonInForm(createCardForm);
+
   addNewCard(titleInput.value, linkInput.value)
     .then((res) => {
       console.log(res);
       addCard(res);
+      closePopup();
     })
     .catch((err) => {
       console.log('Ошибка. Запрос не выполнен');
+      closePopup();
     });
 
   createCardForm.reset();
-  closePopup(createCardPopup);
 }
 
 // Добавление карточки
@@ -40,7 +46,6 @@ function createCard(name, link, likesCount, isLiked, showDeleteButton, cardId) {
   const likeButton = cardElement.querySelector('.gallery__like');
   const likeCounter = cardElement.querySelector('.gallery_like-counter');
   const removeButton = cardElement.querySelector('.gallery__trash-button');
-  const removeCardPopup = document.querySelector('.popup_type_delete-card');
 
   cardImage.src = link;
   cardImage.alt = name;
@@ -69,7 +74,9 @@ function createCard(name, link, likesCount, isLiked, showDeleteButton, cardId) {
   if (showDeleteButton) {
     removeButton.addEventListener('click', function (evt) {
       evt.preventDefault();
-      openPopup(removeCardPopup);
+      openPopup(deleteCardPopup);
+      editSubmitButtonText(deleteCardPopup, 'Да');
+      enableSubmitButtonInForm(deleteCardPopup);
       removeConfirmButton.addEventListener('click', function (removeConfirmButtonEvt) {
         removeConfirmButtonEvt.preventDefault();
         removeConfirmButtonEventHandler(evt, cardId);
@@ -95,18 +102,25 @@ function addCardOnPage(container, cardElement) {
 
 function removeConfirmButtonEventHandler(evt, cardId) {
   const removeButton = evt.target;
-  const card = removeButton.closest('.gallery__item')
-  card.remove();
+
+  editSubmitButtonText(deleteCardPopup, 'Удаление...');
+  disableSubmitButtonInForm(deleteCardPopup);
 
   deleteCard(cardId)
     .then((res) => {
       console.log(res);
+
+      const card = removeButton.closest('.gallery__item')
+      card.remove();
+
+      closePopup();
     })
     .catch((err) => {
       console.log('Ошибка. Запрос не выполнен');
+      closePopup();
     });
 
-  closePopup();
+
 
   removeConfirmButton.removeEventListener('click', removeConfirmButtonEventHandler);
 }
