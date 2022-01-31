@@ -1,4 +1,4 @@
-import {closePopup, editForm, openPopup, showImagePopup} from "./modal.js";
+import {closePopup, openPopup, showImagePopup} from "./modal.js";
 import {addNewCard, deleteCard, toggleLikeOnCard} from "./api.js";
 import {user} from "./data.js";
 import {disableSubmitButtonInForm, editSubmitButtonText, enableSubmitButtonInForm} from "./utils.js";
@@ -11,6 +11,8 @@ export const createCardButton = document.querySelector('.profile__add-button');
 const removeConfirmButton = document.querySelector('.remove-button');
 const titleInput = createCardForm.elements['image-title'];
 const linkInput = createCardForm.elements['image-link'];
+
+let activeRemoveCardHandler;
 
 // Coздание карточки
 
@@ -56,10 +58,9 @@ function createCard(name, link, likesCount, isLiked, showDeleteButton, cardId) {
   }
 
   likeButton.addEventListener('click', function (evt) {
-    const isLiked = evt.target.classList.contains('gallery__like_active');
+    const isLiked = !evt.target.classList.contains('gallery__like_active');
     toggleLikeOnCard(isLiked, cardId)
       .then(function (res) {
-        console.log(res);
         evt.target.classList.toggle('gallery__like_active');
         const itemLikesCount = res.likes.length != null ? res.likes.length : 0;
         likeCounter.textContent = `${itemLikesCount}`;
@@ -75,10 +76,18 @@ function createCard(name, link, likesCount, isLiked, showDeleteButton, cardId) {
       openPopup(deleteCardPopup);
       editSubmitButtonText(deleteCardPopup, 'Да');
       enableSubmitButtonInForm(deleteCardPopup);
-      removeConfirmButton.addEventListener('click', function (removeConfirmButtonEvt) {
+
+      function removeConfirmButtonHandler(removeConfirmButtonEvt) {
         removeConfirmButtonEvt.preventDefault();
         removeConfirmButtonEventHandler(evt, cardId);
-      });
+      }
+
+      if (activeRemoveCardHandler != null) {
+        removeConfirmButton.removeEventListener('click', activeRemoveCardHandler);
+      }
+      activeRemoveCardHandler = removeConfirmButtonHandler;
+
+      removeConfirmButton.addEventListener('click', removeConfirmButtonHandler);
     });
   } else {
     removeButton.style.display = "none";
@@ -108,14 +117,11 @@ function removeConfirmButtonEventHandler(evt, cardId) {
       const card = removeButton.closest('.gallery__item')
       card.remove();
       disableSubmitButtonInForm(deleteCardPopup);
-      removeConfirmButtonEventHandler(evt, cardId);
       closePopup();
     })
     .catch(function (err) {
       console.log(`Ошибка. Запрос не выполнен. ${err}`);
     });
-
-  removeConfirmButton.removeEventListener('click', removeConfirmButtonEventHandler);
 }
 
 // Добавление карточек

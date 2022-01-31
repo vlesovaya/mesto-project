@@ -1,17 +1,11 @@
-const config = {
-  baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-6',
-  headers: {
-    authorization: '74e98393-69db-4e2a-9095-4b722370b5b8',
-    'Content-Type': 'application/json'
-  },
-};
+import {config} from "./data.js";
 
 function getUserInfo() {
-  return sendRequest('/users/me', 'GET', null);
+  return sendRequest('/users/me', 'GET');
 }
 
 function getCards() {
-  return sendRequest('/cards', 'GET', null);
+  return sendRequest('/cards', 'GET');
 }
 
 function editProfile(name, info) {
@@ -35,16 +29,14 @@ function addNewCard(name, link) {
 }
 
 function deleteCard(id) {
-  return sendRequest(`/cards/${id}`, 'DELETE', JSON.stringify({
-    _id: id
-  }));
+  return sendRequest(`/cards/${id}`, 'DELETE');
 }
 
 function toggleLikeOnCard(isLiked, id) {
-  return sendRequest(`/cards/likes/${id}`, isLiked ? 'PUT' : 'DELETE', null);
+  return sendRequest(`/cards/likes/${id}`, isLiked ? 'PUT' : 'DELETE');
 }
 
-function sendRequest(urlSuffix, method, body) {
+function sendRequest(urlSuffix, method, body = null) {
   return fetch(`${config.baseUrl}${urlSuffix}`, {
     method: method,
     headers: config.headers,

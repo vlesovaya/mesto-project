@@ -1,7 +1,7 @@
 import {closePopup} from "./modal.js";
 import {editProfilePhoto, getCards, getUserInfo} from "./api.js";
 import {user} from "./data.js";
-import {getUserFeed, addCard} from "./card.js";
+import {addCard} from "./card.js";
 import {disableSubmitButtonInForm, editSubmitButtonText} from "./utils.js";
 
 export const userPhotoPopup = document.querySelector('.popup_type_user-photo');
@@ -18,12 +18,12 @@ export function editPhotoSubmitHandler(evt) {
 
   const linkInput = userPhotoForm.elements['photo-link'];
 
-  disableSubmitButtonInForm(userPhotoForm);
   editSubmitButtonText(userPhotoForm, "Загрузка...")
 
   editProfilePhoto(linkInput.value)
     .then(function (res) {
-      editProfilePhotoElement(linkInput.value)
+      editProfilePhotoElement(linkInput.value);
+      disableSubmitButtonInForm(userPhotoForm);
       closePopup();
     })
     .catch(function (err) {
@@ -46,7 +46,6 @@ export function editProfileElements(name, info) {
 export function getAppInfo() {
   Promise.all([getUserInfo(), getCards()])
     .then(function ([userData, cards]){
-      console.log([userData, cards]);
       editProfileElements(userData.name, userData.about);
       editProfilePhotoElement(userData.avatar);
 

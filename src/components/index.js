@@ -12,7 +12,7 @@ import {
   profileEditButton
 } from "./modal.js";
 import {createCardButton, createCardForm, handleCreateFormSubmit} from "./card.js";
-import {editPhotoSubmitHandler, getProfile, userPhotoForm, getAppInfo} from "./profile.js";
+import {editPhotoSubmitHandler, userPhotoForm, getAppInfo} from "./profile.js";
 
 
 // Открытие модальных окон
@@ -43,7 +43,6 @@ userPhotoForm.addEventListener('submit', editPhotoSubmitHandler);
 
 enableValidation(validationConfig);
 
-// Загрузка профиля
+// Загрузка профиля и карточек
 
-// getProfile();
 getAppInfo();
