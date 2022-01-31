@@ -4,15 +4,15 @@ import {enableValidation} from "./validate.js";
 import {
   addClosePopupOnClick,
   editForm,
-  editFormSubmitHandler,
+  handleEditFormSubmit,
   editPhotoButton,
   openCreateCardPopup,
   openEditPopup,
   openEditUserPhotoPopup,
   profileEditButton
 } from "./modal.js";
-import {createCardButton, createCardForm, createFormSubmitHandler} from "./card.js";
-import {editPhotoSubmitHandler, getProfile, userPhotoForm} from "./profile.js";
+import {createCardButton, createCardForm, handleCreateFormSubmit} from "./card.js";
+import {editPhotoSubmitHandler, getProfile, userPhotoForm, getAppInfo} from "./profile.js";
 
 
 // Открытие модальных окон
@@ -29,11 +29,11 @@ addClosePopupOnClick();
 
 // Редактирование профиля и сохранение
 
-editForm.addEventListener('submit', editFormSubmitHandler);
+editForm.addEventListener('submit', handleEditFormSubmit);
 
 // Coздание карточки
 
-createCardForm.addEventListener('submit', createFormSubmitHandler);
+createCardForm.addEventListener('submit', handleCreateFormSubmit);
 
 // Изменение фотографии пользователя
 
@@ -45,4 +45,5 @@ enableValidation(validationConfig);
 
 // Загрузка профиля
 
-getProfile();
+// getProfile();
+getAppInfo();

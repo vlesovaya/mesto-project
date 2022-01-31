@@ -7,7 +7,7 @@ export const validationConfig = {
   errorClass: 'popup__input-error_active'
 }
 
-export let user = {
+export const user = {
   name: "Loading...",
   about: "Loading...",
   avatar: "",

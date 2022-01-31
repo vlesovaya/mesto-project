@@ -1,7 +1,7 @@
 import {closePopup} from "./modal.js";
-import {editProfilePhoto, getUserInfo} from "./api.js";
+import {editProfilePhoto, getCards, getUserInfo} from "./api.js";
 import {user} from "./data.js";
-import {getUserFeed} from "./card.js";
+import {getUserFeed, addCard} from "./card.js";
 import {disableSubmitButtonInForm, editSubmitButtonText} from "./utils.js";
 
 export const userPhotoPopup = document.querySelector('.popup_type_user-photo');
@@ -28,7 +28,9 @@ export function editPhotoSubmitHandler(evt) {
     })
     .catch(function (err) {
       console.log(`Ошибка. Запрос не выполнен. ${err}`);
-      closePopup();
+    })
+    .finally(function () {
+      editSubmitButtonText(userPhotoForm, "Сохранить")
     });
 }
 
@@ -41,18 +43,21 @@ export function editProfileElements(name, info) {
   profileSubtitle.textContent = info;
 }
 
-export function getProfile() {
-  getUserInfo()
-    .then(function (res) {
-      editProfileElements(res.name, res.about);
-      editProfilePhotoElement(res.avatar);
+export function getAppInfo() {
+  Promise.all([getUserInfo(), getCards()])
+    .then(function ([userData, cards]){
+      console.log([userData, cards]);
+      editProfileElements(userData.name, userData.about);
+      editProfilePhotoElement(userData.avatar);
 
-      user._id = res._id;
-      user.name = res.name;
-      user.about = res.about;
-      user.avatar = res.avatar;
+      user._id = userData._id;
+      user.name = userData.name;
+      user.about = userData.about;
+      user.avatar = userData.avatar;
 
-      getUserFeed();
+      cards.reverse().forEach(function (item) {
+        addCard(item);
+      });
     })
     .catch(function (err) {
       console.log(`Ошибка. Запрос не выполнен. ${err}`);

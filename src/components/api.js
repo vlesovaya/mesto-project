@@ -1,5 +1,3 @@
-export {getUserInfo, getCards, editProfile, editProfilePhoto, addNewCard, deleteCard, toggleLikeOnCard};
-
 const config = {
   baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-6',
   headers: {
@@ -59,3 +57,4 @@ function sendRequest(urlSuffix, method, body) {
   });
 }
 
+export {getUserInfo, getCards, editProfile, editProfilePhoto, addNewCard, deleteCard, toggleLikeOnCard};

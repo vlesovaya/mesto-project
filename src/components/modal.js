@@ -32,7 +32,6 @@ function openPopupWithForm(popup, form, evt) {
 }
 
 export function openEditPopup(evt) {
-  editSubmitButtonText(editForm, 'Сохранить');
   openPopupWithForm(editPopup, editForm, evt);
 
   const name = editForm.elements['user-name'];
@@ -43,7 +42,6 @@ export function openEditPopup(evt) {
 }
 
 export function openCreateCardPopup(evt) {
-  editSubmitButtonText(createCardForm, 'Создать');
   openPopupWithForm(createCardPopup, createCardForm, evt);
 }
 
@@ -58,7 +56,6 @@ export function addClosePopupOnClick() {
   for (let popup of popups) {
     popup.addEventListener('mousedown', function (evt) {
       if (evt.target.classList.contains('popup_opened')) {
-        evt.preventDefault();
         closePopup();
       }
       if (evt.target.classList.contains('popup__close')) {
@@ -71,10 +68,7 @@ export function addClosePopupOnClick() {
 
 function closeOnEscapeClick(evt) {
   if (evt.key === 'Escape') {
-    const popup = document.querySelector('.popup_opened');
-    if (popup !== null) {
       closePopup();
-    }
   }
 }
 
@@ -89,24 +83,27 @@ export function closePopup() {
 
 // Редактирование профиля и сохранение
 
-export function editFormSubmitHandler(evt) {
+export function handleEditFormSubmit(evt) {
   evt.preventDefault();
 
   const nameInput = editForm.elements['user-name'];
   const infoInput = editForm.elements['about-me'];
 
   editSubmitButtonText(editForm, 'Сохранение...');
-  disableSubmitButtonInForm(editForm);
 
   editProfile(nameInput.value, infoInput.value)
     .then(function (res) {
       editProfileElements(nameInput.value, infoInput.value);
+      disableSubmitButtonInForm(editForm);
       closePopup();
     })
     .catch(function (err) {
       console.log(`Ошибка. Запрос не выполнен. ${err}`);
-      closePopup();
+    })
+    .finally(function () {
+      editSubmitButtonText(editForm, 'Сохранить');
     });
+
 }
 
 // Открытие модального окна с фото
