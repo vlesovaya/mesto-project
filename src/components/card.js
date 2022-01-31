@@ -1,5 +1,5 @@
 import {closePopup, openPopup, showImagePopup} from "./modal.js";
-import {addNewCard, deleteCard, getCards, toggleLikeOnCard} from "./api.js";
+import {addNewCard, deleteCard, toggleLikeOnCard} from "./api.js";
 import {user} from "./data.js";
 import {disableSubmitButtonInForm, editSubmitButtonText, enableSubmitButtonInForm} from "./utils.js";
 
@@ -9,29 +9,31 @@ export const deleteCardPopup = document.querySelector('.popup_type_delete-card')
 export const createCardPopup = document.querySelector('.popup_type_add');
 export const createCardButton = document.querySelector('.profile__add-button');
 const removeConfirmButton = document.querySelector('.remove-button');
+const titleInput = createCardForm.elements['image-title'];
+const linkInput = createCardForm.elements['image-link'];
+
+let activeRemoveCardHandler;
 
 // Coздание карточки
 
-export function createFormSubmitHandler(evt) {
+export function handleCreateFormSubmit(evt) {
   evt.preventDefault();
 
-  const titleInput = createCardForm.elements['image-title'];
-  const linkInput = createCardForm.elements['image-link'];
-
   editSubmitButtonText(createCardForm, 'Загрузка...');
-  disableSubmitButtonInForm(createCardForm);
 
   addNewCard(titleInput.value, linkInput.value)
     .then(function (res) {
       addCard(res);
+      disableSubmitButtonInForm(createCardForm);
       closePopup();
+      createCardForm.reset();
     })
     .catch(function (err) {
       console.log(`Ошибка. Запрос не выполнен. ${err}`);
-      closePopup();
+    })
+    .finally(function () {
+      editSubmitButtonText(createCardForm, 'Создать');
     });
-
-  createCardForm.reset();
 }
 
 // Добавление карточки
@@ -56,10 +58,10 @@ function createCard(name, link, likesCount, isLiked, showDeleteButton, cardId) {
   }
 
   likeButton.addEventListener('click', function (evt) {
-    evt.target.classList.toggle('gallery__like_active');
-    const isLiked = evt.target.classList.contains('gallery__like_active');
+    const isLiked = !evt.target.classList.contains('gallery__like_active');
     toggleLikeOnCard(isLiked, cardId)
       .then(function (res) {
+        evt.target.classList.toggle('gallery__like_active');
         const itemLikesCount = res.likes.length != null ? res.likes.length : 0;
         likeCounter.textContent = `${itemLikesCount}`;
       })
@@ -74,10 +76,18 @@ function createCard(name, link, likesCount, isLiked, showDeleteButton, cardId) {
       openPopup(deleteCardPopup);
       editSubmitButtonText(deleteCardPopup, 'Да');
       enableSubmitButtonInForm(deleteCardPopup);
-      removeConfirmButton.addEventListener('click', function (removeConfirmButtonEvt) {
+
+      function removeConfirmButtonHandler(removeConfirmButtonEvt) {
         removeConfirmButtonEvt.preventDefault();
         removeConfirmButtonEventHandler(evt, cardId);
-      });
+      }
+
+      if (activeRemoveCardHandler != null) {
+        removeConfirmButton.removeEventListener('click', activeRemoveCardHandler);
+      }
+      activeRemoveCardHandler = removeConfirmButtonHandler;
+
+      removeConfirmButton.addEventListener('click', removeConfirmButtonHandler);
     });
   } else {
     removeButton.style.display = "none";
@@ -101,25 +111,22 @@ function removeConfirmButtonEventHandler(evt, cardId) {
   const removeButton = evt.target;
 
   editSubmitButtonText(deleteCardPopup, 'Удаление...');
-  disableSubmitButtonInForm(deleteCardPopup);
 
   deleteCard(cardId)
     .then(function (res) {
       const card = removeButton.closest('.gallery__item')
       card.remove();
+      disableSubmitButtonInForm(deleteCardPopup);
       closePopup();
     })
     .catch(function (err) {
       console.log(`Ошибка. Запрос не выполнен. ${err}`);
-      closePopup();
     });
-
-  removeConfirmButton.removeEventListener('click', removeConfirmButtonEventHandler);
 }
 
 // Добавление карточек
 
-function addCard(item) {
+export function addCard(item) {
   const itemLikesCount = item.likes.length != null ? item.likes.length : 0;
 
   const usersWhoLiked = item.likes.map(function (like) {
@@ -133,16 +140,4 @@ function addCard(item) {
   const cardElement = createCard(item.name, item.link, itemLikesCount, isLiked, showDeleteButton, item._id);
 
   addCardOnPage(cardsContainer, cardElement);
-}
-
-export function getUserFeed() {
-  getCards()
-    .then(function (res) {
-      res.reverse().forEach(function (item) {
-        addCard(item);
-      });
-    })
-    .catch(function (err) {
-      console.log(`Ошибка. Запрос не выполнен. ${err}`);
-    });
 }
