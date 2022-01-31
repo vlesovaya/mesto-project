@@ -4,15 +4,15 @@ import {enableValidation} from "./validate.js";
 import {
   addClosePopupOnClick,
   editForm,
-  handleEditFormSubmit,
   editPhotoButton,
+  handleEditFormSubmit,
   openCreateCardPopup,
   openEditPopup,
   openEditUserPhotoPopup,
   profileEditButton
 } from "./modal.js";
 import {createCardButton, createCardForm, handleCreateFormSubmit} from "./card.js";
-import {editPhotoSubmitHandler, userPhotoForm, getAppInfo} from "./profile.js";
+import {editPhotoSubmitHandler, getAppInfo, userPhotoForm} from "./profile.js";
 
 
 // Открытие модальных окон

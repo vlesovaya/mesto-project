@@ -45,7 +45,7 @@ export function editProfileElements(name, info) {
 
 export function getAppInfo() {
   Promise.all([getUserInfo(), getCards()])
-    .then(function ([userData, cards]){
+    .then(function ([userData, cards]) {
       editProfileElements(userData.name, userData.about);
       editProfilePhotoElement(userData.avatar);
 

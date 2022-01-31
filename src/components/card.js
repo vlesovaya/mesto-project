@@ -31,7 +31,7 @@ export function handleCreateFormSubmit(evt) {
     .catch(function (err) {
       console.log(`Ошибка. Запрос не выполнен. ${err}`);
     })
-    .finally(function (){
+    .finally(function () {
       editSubmitButtonText(createCardForm, 'Создать');
     });
 }

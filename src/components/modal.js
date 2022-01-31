@@ -68,7 +68,7 @@ export function addClosePopupOnClick() {
 
 function closeOnEscapeClick(evt) {
   if (evt.key === 'Escape') {
-      closePopup();
+    closePopup();
   }
 }
 
