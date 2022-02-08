@@ -90,11 +90,11 @@ export function handleEditFormSubmit(evt) {
   const infoInput = editForm.elements['about-me'];
 
   editSubmitButtonText(editForm, 'Сохранение...');
+  disableSubmitButtonInForm(editForm);
 
   editProfile(nameInput.value, infoInput.value)
     .then(function (res) {
       editProfileElements(nameInput.value, infoInput.value);
-      disableSubmitButtonInForm(editForm);
       closePopup();
     })
     .catch(function (err) {

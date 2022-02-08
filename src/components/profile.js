@@ -18,12 +18,12 @@ export function editPhotoSubmitHandler(evt) {
 
   const linkInput = userPhotoForm.elements['photo-link'];
 
-  editSubmitButtonText(userPhotoForm, "Загрузка...")
+  editSubmitButtonText(userPhotoForm, "Загрузка...");
+  disableSubmitButtonInForm(userPhotoForm);
 
   editProfilePhoto(linkInput.value)
     .then(function (res) {
       editProfilePhotoElement(linkInput.value);
-      disableSubmitButtonInForm(userPhotoForm);
       closePopup();
     })
     .catch(function (err) {

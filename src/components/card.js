@@ -20,11 +20,11 @@ export function handleCreateFormSubmit(evt) {
   evt.preventDefault();
 
   editSubmitButtonText(createCardForm, 'Загрузка...');
+  disableSubmitButtonInForm(createCardForm);
 
   addNewCard(titleInput.value, linkInput.value)
     .then(function (res) {
       addCard(res);
-      disableSubmitButtonInForm(createCardForm);
       closePopup();
       createCardForm.reset();
     })
