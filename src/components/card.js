@@ -111,6 +111,7 @@ function removeConfirmButtonEventHandler(evt, cardId) {
   const removeButton = evt.target;
 
   editSubmitButtonText(deleteCardPopup, 'Удаление...');
+  disableSubmitButtonInForm(deleteCardPopup);
 
   deleteCard(cardId)
     .then(function (res) {
