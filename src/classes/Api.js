@@ -4,39 +4,39 @@ class Api {
   }
 
   getUserInfo() {
-    return sendRequest('/users/me', 'GET');
+    return this._sendRequest('/users/me', 'GET');
   }
 
   getCards() {
-    return sendRequest('/cards', 'GET');
+    return this._sendRequest('/cards', 'GET');
   }
 
   editProfile(name, info) {
-    return sendRequest("/users/me", 'PATCH', JSON.stringify({
+    return this._sendRequest("/users/me", 'PATCH', JSON.stringify({
       name: name,
       about: info
     }));
   }
 
   editProfilePhoto(link) {
-    return sendRequest("/users/me/avatar", 'PATCH', JSON.stringify({
+    return this._sendRequest("/users/me/avatar", 'PATCH', JSON.stringify({
       avatar: link
     }));
   }
 
   addNewCard(name, link) {
-    return sendRequest("/cards", 'POST', JSON.stringify({
+    return this._sendRequest("/cards", 'POST', JSON.stringify({
       name: name,
       link: link
     }));
   }
 
   deleteCard(id) {
-    return sendRequest(`/cards/${id}`, 'DELETE');
+    return this._sendRequest(`/cards/${id}`, 'DELETE');
   }
 
   toggleLikeOnCard(isLiked, id) {
-    return sendRequest(`/cards/likes/${id}`, isLiked ? 'PUT' : 'DELETE');
+    return this._sendRequest(`/cards/likes/${id}`, isLiked ? 'PUT' : 'DELETE');
   }
 
   _sendRequest(urlSuffix, method, body = null) {
