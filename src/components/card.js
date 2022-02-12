@@ -117,7 +117,6 @@ function removeConfirmButtonEventHandler(evt, cardId) {
     .then(function (res) {
       const card = removeButton.closest('.gallery__item')
       card.remove();
-      disableSubmitButtonInForm(deleteCardPopup);
       closePopup();
     })
     .catch(function (err) {
@@ -142,3 +141,4 @@ export function addCard(item) {
 
   addCardOnPage(cardsContainer, cardElement);
 }
+
